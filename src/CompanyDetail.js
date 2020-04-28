@@ -1,12 +1,44 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import JoblyApi from "./HelperApi";
+import { useParams } from "react-router-dom";
+import JobCard from './JobCard';
 
 function CompanyDetail(){
-  return(
-    <div>
-      <h1>Company Details</h1>
-    </div>
-  )
+  const[company, setCompany] = useState({});
+  let { name } = useParams();
 
+  useEffect(() => {
+    console.log('use effect working');
+    async function getCompany() {
+      try {
+        let resp = await JoblyApi.getCompany(name);
+        setCompany(resp);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getCompany();
+  }, [setCompany, name]);
+
+  if(Array.isArray(company.jobs)){
+    return(
+      <div>
+        <h3>{company.name}</h3>
+        <p>{company.description}</p>
+        <div>{company.jobs.map(job => (
+          <div>
+            <JobCard
+            key={job.id}
+            title={job.title}
+            salary={job.salary}
+            equity={job.equity}/>
+          </div>
+        ))}</div>
+      </div>
+    )
+  }else{
+    return(<div>"Loading..."</div>);
+  }
 }
 
 export default CompanyDetail

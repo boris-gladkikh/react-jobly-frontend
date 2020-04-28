@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import JoblyApi from "./HelperApi";
 import SearchBar from "./SearchBar";
 import CompanyCard from "./CompanyCard";
+import { Link } from "react-router-dom";
 
-function CompanyList(){
-  async function getCompanies(){
-    return await JoblyApi.getAllCompanies()
-  }
+function CompanyList({setCompanies, companies}) {
 
-  const companies = getCompanies();
+  useEffect(() => {
+    async function getCompanies() {
+      try {
+        let resp = await JoblyApi.getAllCompanies()
+        setCompanies(resp);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    getCompanies();
+  }, [setCompanies]);
 
-  return(
+  return (
     <div>
       <SearchBar />
       <div>
-        {companies.map(({name,description}) => <CompanyCard name={name} description={description}/>)}
-      </div>
+        {companies.map(({ name, logo_url, description, handle }) =>
+          <Link className="CompanyList-Link" to={`companies/${name}`}>
+            <CompanyCard
+              key={handle}
+              name={name}
+              logo_url={logo_url}
+              description={description} 
+            /> 
+          </Link>)}
+        </div>
 
     </div>
   )

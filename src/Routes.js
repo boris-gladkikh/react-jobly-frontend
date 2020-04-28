@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
+import React, {useState} from 'react';
+import { Route, Switch, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
 import CompanyList from "./CompanyList";
 import CompanyDetail from "./CompanyDetail";
@@ -12,6 +12,13 @@ import NavBar from "./NavBar";
 //Routes handling our navigation to components
 //Switch handles our routes, Nav bar shows up on each page
 function Routes() {
+  const [companies, setCompanies] = useState([]);
+
+  // function companyFilter(name){
+  //   let companyArray = companies.filter(company => company.name === name);
+  //   return companyArray[0];
+  // }
+
   return (
     <>
       <NavBar />
@@ -20,7 +27,7 @@ function Routes() {
           <Homepage />
         </Route>
         <Route exact path="/companies">
-          <CompanyList />
+          <CompanyList companies={companies} setCompanies={setCompanies}/>
         </Route>
         <Route  path="/companies/:name">
           <CompanyDetail />
@@ -37,7 +44,7 @@ function Routes() {
         <Redirect to="/" />
       </Switch>
     </>
-  )
+  );
 
 }
 
