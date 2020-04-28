@@ -19,12 +19,13 @@ signup form
 
 general_job list 
 	-search_bar (jobs) (form?)
+
 	-job
 		job state (apply/applied)
 
 
 profile (form)
-		profile state
+		profile state - keep track of things typed
 
 company_list
 	-searchbar ( same, appears again)
