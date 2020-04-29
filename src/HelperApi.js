@@ -26,16 +26,37 @@ class JoblyApi {
     }
   }
 
+  //gets company by handle from backend API
+
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
-  //TODO
+  
+    //gets all companies from backend API
+
   static async getAllCompanies() {
     let res = await this.request('companies/');
     return res.companies;
   }
+
+    //gets all jobs from backend API
+
+  static async getAllJobs(){
+    let res = await this.request('jobs/');
+    return res.jobs;
+  }
+
+
+
+  static async getFilteredResults(params,endpoint){
+    let res = await this.request(`/${endpoint}`, params.toLowerCase());
+    return res.endpoint
+
+
+  }
 }
+
 
 export default JoblyApi
 

@@ -20,6 +20,9 @@ function CompanyDetail(){
     getCompany();
   }, [setCompany, name]);
 
+  //todo - getting error regarding unique key for child, although
+  //job.id IS a unique key within company jobs.
+
   if(Array.isArray(company.jobs)){
     return(
       <div>

@@ -12,7 +12,11 @@ import NavBar from "./NavBar";
 //Routes handling our navigation to components
 //Switch handles our routes, Nav bar shows up on each page
 function Routes() {
-  const [companies, setCompanies] = useState([]);
+  const [searchEndpoint, setSearchEndpoint] = useState();
+
+
+
+
 
   // function companyFilter(name){
   //   let companyArray = companies.filter(company => company.name === name);
@@ -27,13 +31,13 @@ function Routes() {
           <Homepage />
         </Route>
         <Route exact path="/companies">
-          <CompanyList companies={companies} setCompanies={setCompanies}/>
+          <CompanyList endpoint={searchEndpoint} setEndpoint={setSearchEndpoint}/>
         </Route>
         <Route  path="/companies/:name">
           <CompanyDetail />
         </Route>
         <Route exact path="/jobs">
-          <JobList />
+          <JobList endpoint={searchEndpoint} setEndpoint={setSearchEndpoint} />
         </Route>
         <Route exact path="/login">
           <LoginSignupForm />
