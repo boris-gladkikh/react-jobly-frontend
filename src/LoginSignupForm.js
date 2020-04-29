@@ -1,6 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function LoginSignupForm(){
+
+  const [hideLogin, setHideLogin] = useState('');
+  const [hideSignup, setHideSignup] = useState('hidden');
+  const [formData, setFormData] = useState({});
+
+  
+
+
   return(
     <div>
       <h1>Login</h1>
@@ -9,4 +17,4 @@ function LoginSignupForm(){
 
 }
 
-export default LoginSignupForm
+export default LoginSignupForm;

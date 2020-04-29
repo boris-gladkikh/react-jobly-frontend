@@ -1,63 +1,70 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import JoblyApi from "./HelperApi";
 
 
 
-
-function SearchBar({searchCompanies, endpoint, searchJobs}){
-  const [formData, setFormData] = useState()
+/**SearchBar: Component that is used to filter a list */
+function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
+  //TODO add string
+  const [formData, setFormData] = useState();
   const [searchClick, setSearchClick] = useState(false);
-  
 
-
-  function handleChange(evt){
-    let {name, value} = evt.target
-    setFormData(data =>({
-      ...data,
-      [name]:value
-    }))
+  // handleChange: sets formData state to form values
+  function handleChange(evt) {
+    let { name, value } = evt.target
+    //TODO change to string
+    setFormData({[name]: value});
   }
 
-  
-  function handleSubmit(evt){
+  // handleSubmit: changes our useEffect state to true ot false
+  function handleSubmit(evt) {
     evt.preventDefault();
     setSearchClick(!searchClick);
-    
   }
 
-  //once our search is submitted, useEffect uses our API filteredResults method then passes 
-  //reponse to our search function, which then 
+  //once our search is submitted, useEffect uses our API filteredCompanies
+  // or filteredJobs method then passes 
+  //reponse to our search function to change state in company list or job list
+  //to filter lists shown
 
-  useEffect(()=>{
-    async function filterBySearch(){
-      let response = await JoblyApi.getFilteredResults(formData,endpoint);
-      if(endpoint=== "companies"){
+  async function filterBySearch() {
+    try {
+      if (whichSearch === 'companies') {
+        let response = await JoblyApi.getFilteredCompanies(formData);
         searchCompanies(response);
       } else {
-        searchJobs(response)
+        let response = await JoblyApi.getFilteredJobs(formData);
+        searchJobs(response);
       }
+    } catch (err) {
+      console.error(err);
     }
-    filterBySearch();
-},[searchClick, endpoint,formData, searchCompanies, searchJobs]);
+  }
 
+  // const filterSearch = useCallback(
+  //   () => {
+  //     filterBySearch();
+  //   },
+  //   []
+  // );
 
+  useEffect(() => {
+    // filterSearch();
+    //when we pull searchJobs and/or searchCompanies we prevent an infinate loop
+    // TODO:
+    //hook called useCallback on
+    filterBySearch()
+  }, [searchClick]);
 
-  //determines what we are searching 
-  //if ___ is company,  use API helper for get company
-  //if ___ is job use API helper for getting job
-
-
-  return(
+  return (
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="search">Search:</label>
-        <input onChange={handleChange} name="search" type="text"/>
+        <input onChange={handleChange} name="search" type="text" />
         <button type="submit">Go</button>
       </form>
-    
     </div>
-  )
-
+  );
 }
 
 export default SearchBar

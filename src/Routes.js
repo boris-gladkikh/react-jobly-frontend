@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
 import CompanyList from "./CompanyList";
@@ -12,16 +12,6 @@ import NavBar from "./NavBar";
 //Routes handling our navigation to components
 //Switch handles our routes, Nav bar shows up on each page
 function Routes() {
-  const [searchEndpoint, setSearchEndpoint] = useState();
-
-
-
-
-
-  // function companyFilter(name){
-  //   let companyArray = companies.filter(company => company.name === name);
-  //   return companyArray[0];
-  // }
 
   return (
     <>
@@ -31,13 +21,13 @@ function Routes() {
           <Homepage />
         </Route>
         <Route exact path="/companies">
-          <CompanyList endpoint={searchEndpoint} setEndpoint={setSearchEndpoint}/>
+          <CompanyList />
         </Route>
         <Route  path="/companies/:name">
           <CompanyDetail />
         </Route>
         <Route exact path="/jobs">
-          <JobList endpoint={searchEndpoint} setEndpoint={setSearchEndpoint} />
+          <JobList />
         </Route>
         <Route exact path="/login">
           <LoginSignupForm />
