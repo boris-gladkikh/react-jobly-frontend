@@ -66,8 +66,14 @@ class JoblyApi {
 
   // make login post request
   // jsonData -> {username: '', password: ''}
-  static async login(jsonData){
-    let res = await this.request('login/', jsonData, "post");
+  static async login(data){
+    let res = await this.request('login/', data, "post");
+    return res.token;
+  }
+  // make signup post request
+  // jsonData -> {username: '', password: '', first_name: '', last_name: '', email: ''}
+  static async signup(data){
+    let res = await this.request('users/', data, "post");
     return res.token;
   }
 }

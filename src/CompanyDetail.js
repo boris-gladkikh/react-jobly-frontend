@@ -6,7 +6,11 @@ import JobCard from './JobCard';
 function CompanyDetail(){
   const[company, setCompany] = useState({});
   let { name } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
+  // make api call to get a company
+  // handle error if call went wrong
+  // set isLoading state back to false 
   useEffect(() => {
     console.log('use effect working');
     async function getCompany() {
@@ -15,15 +19,16 @@ function CompanyDetail(){
         setCompany(resp);
       } catch (err) {
         console.error(err);
+      }finally{
+        setIsLoading(false);
       }
     }
     getCompany();
   }, [setCompany, name]);
 
-  //todo - getting error regarding unique key for child, although
-  //job.id IS a unique key within company jobs.
 
-  if(Array.isArray(company.jobs)){
+  // If isLoading state is false render jobcard, otherwise show loading...
+  if(!isLoading){
     return(
       <div>
         <h3>{company.name}</h3>
