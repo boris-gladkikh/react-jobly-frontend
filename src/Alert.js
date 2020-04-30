@@ -6,13 +6,14 @@ import React from 'react';
 //TODO: assign actual error as prop so alerts are more
 //verbose, less vague
 
-function Alert({whichAlert}){
-  const errors = {
-    login: 'Invalid Credentials!',
-    register: 'Invalid Registration!'
-  }
+function Alert({errors}){
+
   return (
-    <div>{errors[whichAlert]}!</div>
+
+    errors.map((err,i) => (
+      <div key={i}>{err}</div>
+    ))
+   
   );
 }
 

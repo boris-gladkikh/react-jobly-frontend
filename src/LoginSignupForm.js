@@ -20,10 +20,11 @@ function LoginSignupForm() {
   }
   const [hideLogin, setHideLogin] = useState('Hidden');
   const [hideSignup, setHideSignup] = useState('Hidden');
-  const [formData, setFormData] = useState(initialData);
-  const [clickSubmitLogin, setClickSubmitLogin] = useState(false);
-  const [clickSubmitSignUp, setClickSubmitSignUp] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('Hidden');
+  //spread initial data insite formData state, so there's no way for anyone to edit OG reference!!!
+  const [formData, setFormData] = useState({...initialData});
+  const [logginIn, setlogginIn] = useState(false);
+  const [signingUp, setsigningUp] = useState(false);
+  const [errorMessage, setErrorMessage] = useState([]);
   const { setToken } = useContext(TokenContext);
 
 
@@ -33,79 +34,74 @@ function LoginSignupForm() {
   */
 
 
-  useEffect(() => {
+  useEffect(function registerOrLogin() {
     async function logIn() {
+      /*uses login request method, sets token state with response, saves token in 
+localStorage, redirects to companies once logged in via history */
 
-      await doLogin(formData);
+      try {
+        console.log("dologin is happening");
+        let response = await JoblyApi.login(formData);
+        window.localStorage.setItem('token', response);
+        setToken(response);
+        history.push("/companies");
+      }
+      catch (err) {
+        setErrorMessage(messages=>([
+          ...messages, ...err
+        ]));
+        // alert("Something went wrong. with login");
+        console.error(err);
+      }
+
+
     }
     async function signUp() {
 
-      await doSignUp(formData);
+      /*uses register request method, sets token state with response, saves token in 
+localStorage, redirects to companies once logged in via history */
+
+      try {
+        let response = await JoblyApi.signup(formData);
+        window.localStorage.setItem('token', response);
+        setToken(response);
+        history.push("/companies");
+      } catch (err) {
+        setErrorMessage(messages=>([
+          ...messages, ...err
+        ]));
+        // alert('Something went wrong with signup!');
+        console.error(err);
+      }
+
     }
 
 
-    if (clickSubmitLogin) {
+    if (logginIn) {
       logIn();
-      setClickSubmitLogin(false);
+      setlogginIn(false);
       setFormData(initialData);
-      setErrorMessage('Hidden');
+      setErrorMessage([]);
 
 
     }
-    else if (clickSubmitSignUp) {
+    else if (signingUp) {
       signUp();
-      setClickSubmitSignUp(false);
+      setsigningUp(false);
       setFormData(initialData);
-      setErrorMessage('Hidden');
+      setErrorMessage([]);
 
     }
 
-    //TODO - dependencies still giving warnings
 
-  }, [clickSubmitSignUp, clickSubmitLogin, formData, initialData])
+  }, [signingUp, logginIn, formData, initialData, setToken, history])
 
-  //TODO - why doesn't history.push work inside handleSubmit?
-
-  /*uses register request method, sets token state with response, saves token in 
-  localStorage, redirects to companies once logged in via history */
-  async function doSignUp(data) {
-    try {
-      let response = await JoblyApi.signup(data);
-      window.localStorage.setItem('token', response);
-      setToken(response);
-      history.push("/companies");
-    } catch (err) {
-      setErrorMessage('');
-      alert('Somthing went wrong with signup!');
-      console.error(err);
-    }
-  }
-
-  /*uses login request method, sets token state with response, saves token in 
- localStorage, redirects to companies once logged in via history */
-
-  //maybe refactor - since code is almost identical?
-
-  async function doLogin(data) {
-    try {
-      console.log("dologin is happening");
-      let response = await JoblyApi.login(data);
-      window.localStorage.setItem('token', response);
-      setToken(response);
-      history.push("/companies");
-    }
-    catch (err) {
-      setErrorMessage('');
-      alert("Something went wrong. with login");
-      console.error(err);
-    }
-  }
 
   //upon signUp submit, changes click state to trigger useEffect
 
   function handleSubmitSignUp(evt) {
     evt.preventDefault();
-    setClickSubmitSignUp(true);
+    setsigningUp(true);
     //checks localStorage to make sure it does what we want
     console.log("signup", localStorage);
   }
@@ -114,7 +110,7 @@ function LoginSignupForm() {
 
   function handleSubmitLogin(evt) {
     evt.preventDefault();
-    setClickSubmitLogin(true);
+    setlogginIn(true);
     //checks localStorage to make sure it does what we want
     console.log("login", localStorage);
 
@@ -154,7 +150,7 @@ function LoginSignupForm() {
         <label htmlFor="password" >Password:</label>
         <input onChange={handleChange} value={formData.password} name="password"></input><br />
         <button type="submit">Submit</button>
-        <div className={errorMessage}><Alert whichAlert="login" /></div>
+        <div ><Alert errors={errorMessage} /></div>
       </form>
 
       <form className={`"signUpForm" ${hideSignup}`} onSubmit={handleSubmitSignUp}>
@@ -169,7 +165,7 @@ function LoginSignupForm() {
         <label htmlFor="password" >Password:</label>
         <input onChange={handleChange} value={formData.password} name="password"></input><br />
         <button type="submit">Submit</button>
-        <div className={errorMessage}><Alert whichAlert="register" /></div>
+        <div ><Alert errors={errorMessage} /></div>
       </form>
     </div>
   )
