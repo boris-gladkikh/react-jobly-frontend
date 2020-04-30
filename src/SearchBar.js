@@ -20,6 +20,7 @@ function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     setSearchClick(!searchClick);
+
   }
 
   //once our search is submitted, useEffect uses our API filteredCompanies
@@ -27,34 +28,31 @@ function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
   //reponse to our search function to change state in company list or job list
   //to filter lists shown
 
-  async function filterBySearch() {
-    try {
-      if (whichSearch === 'companies') {
-        let response = await JoblyApi.getFilteredCompanies(formData);
-        searchCompanies(response);
-      } else {
-        let response = await JoblyApi.getFilteredJobs(formData);
-        searchJobs(response);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  const filterSearch = useCallback(
+    async (formData) => {
+      try {
+        if (whichSearch === 'companies') {
+          let response = await JoblyApi.getFilteredCompanies(formData);
+          searchCompanies(response);
 
-  // const filterSearch = useCallback(
-  //   () => {
-  //     filterBySearch();
-  //   },
-  //   []
-  // );
+        } else {
+          let response = await JoblyApi.getFilteredJobs(formData);
+          searchJobs(response);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setSearchClick(false);
+      }
+    
+    },[searchCompanies, searchJobs, whichSearch]);
 
   useEffect(() => {
-    // filterSearch();
-    //when we pull searchJobs and/or searchCompanies we prevent an infinate loop
-    // TODO:
-    //hook called useCallback on
-    filterBySearch()
-  }, [searchClick]);
+    if(searchClick){
+      filterSearch(formData);
+    }
+
+  }, [searchClick, filterSearch, formData]);
 
   return (
     <div>

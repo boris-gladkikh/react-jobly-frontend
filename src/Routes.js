@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
 import CompanyList from "./CompanyList";
@@ -7,14 +7,19 @@ import JobList from "./JobList";
 import LoginSignupForm from "./LoginSignupForm";
 import ProfileForm from "./ProfileForm";
 import NavBar from "./NavBar";
+import TokenContext from "./TokenContext";
+
 
 
 //Routes handling our navigation to components
 //Switch handles our routes, Nav bar shows up on each page
 function Routes() {
+  const [token, setToken] = useState("");
 
+//pass states as provider, use context when login form updates
   return (
     <>
+    <TokenContext.Provider value={{token, setToken}}>
       <NavBar />
       <Switch>
         <Route exact path="/">
@@ -30,13 +35,14 @@ function Routes() {
           <JobList />
         </Route>
         <Route exact path="/login">
-          <LoginSignupForm />
+          <LoginSignupForm  />
         </Route>
         <Route exact path="/profile">
           <ProfileForm />
         </Route>
         <Redirect to="/" />
       </Switch>
+      </TokenContext.Provider>
     </>
   );
 
