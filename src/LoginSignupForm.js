@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
 import JoblyApi from "./HelperApi";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import TokenContext from "./TokenContext";
 import Alert from './Alert';
+import "./login.css";
 
-
-import "./login.css"
+// parent component of alert, child component of homepage,routes
+//renders forms, sends request, receives token or error based on response,
+//authenticates user or Alerts user to error, redirects to company page upon login
 
 function LoginSignupForm() {
-  // const history = useHistory();
+  const history = useHistory();
   const initialData = {
     username: '',
     password: '',
     first_name: '',
-    last_name: '' ,
-    email: '' 
+    last_name: '',
+    email: ''
   }
   const [hideLogin, setHideLogin] = useState('Hidden');
   const [hideSignup, setHideSignup] = useState('Hidden');
@@ -22,13 +24,16 @@ function LoginSignupForm() {
   const [clickSubmitLogin, setClickSubmitLogin] = useState(false);
   const [clickSubmitSignUp, setClickSubmitSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState('Hidden');
-  const {setToken} = useContext(TokenContext);
+  const { setToken } = useContext(TokenContext);
 
-  // console.log(formData);
+
+
+  /*invokes our login/register requests (depending on which form is submitted)
+    then resets our submit click states, and hides error messages if exposed
+  */
 
 
   useEffect(() => {
-
     async function logIn() {
 
       await doLogin(formData);
@@ -37,34 +42,49 @@ function LoginSignupForm() {
 
       await doSignUp(formData);
     }
+
+
     if (clickSubmitLogin) {
       logIn();
       setClickSubmitLogin(false);
       setFormData(initialData);
       setErrorMessage('Hidden');
+
+
     }
     else if (clickSubmitSignUp) {
       signUp();
       setClickSubmitSignUp(false);
       setFormData(initialData);
       setErrorMessage('Hidden');
+
     }
 
+    //TODO - dependencies still giving warnings
 
-  }, [clickSubmitSignUp, clickSubmitLogin])
+  }, [clickSubmitSignUp, clickSubmitLogin, formData, initialData])
 
-  //maybe refactor?
-  async function doSignUp(data){
-    try{
+  //TODO - why doesn't history.push work inside handleSubmit?
+
+  /*uses register request method, sets token state with response, saves token in 
+  localStorage, redirects to companies once logged in via history */
+  async function doSignUp(data) {
+    try {
       let response = await JoblyApi.signup(data);
       window.localStorage.setItem('token', response);
-      setToken(response)
-    }catch (err){
+      setToken(response);
+      history.push("/companies");
+    } catch (err) {
       setErrorMessage('');
       alert('Somthing went wrong with signup!');
       console.error(err);
     }
   }
+
+  /*uses login request method, sets token state with response, saves token in 
+ localStorage, redirects to companies once logged in via history */
+
+  //maybe refactor - since code is almost identical?
 
   async function doLogin(data) {
     try {
@@ -72,28 +92,35 @@ function LoginSignupForm() {
       let response = await JoblyApi.login(data);
       window.localStorage.setItem('token', response);
       setToken(response);
+      history.push("/companies");
     }
     catch (err) {
       setErrorMessage('');
       alert("Something went wrong. with login");
       console.error(err);
     }
-
   }
+
+  //upon signUp submit, changes click state to trigger useEffect
 
   function handleSubmitSignUp(evt) {
     evt.preventDefault();
     setClickSubmitSignUp(true);
+    //checks localStorage to make sure it does what we want
     console.log("signup", localStorage);
-    // history.push('/companies');
   }
+
+  //upon logIn submit, changes click state to trigger useEffect
 
   function handleSubmitLogin(evt) {
     evt.preventDefault();
     setClickSubmitLogin(true);
-    console.log("login", clickSubmitLogin, localStorage);
-    // history.push('/companies');
+    //checks localStorage to make sure it does what we want
+    console.log("login", localStorage);
+
   }
+
+  // on data change, sets form data
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -127,7 +154,7 @@ function LoginSignupForm() {
         <label htmlFor="password" >Password:</label>
         <input onChange={handleChange} value={formData.password} name="password"></input><br />
         <button type="submit">Submit</button>
-        <div className={errorMessage}><Alert whichAlert="login"/></div>
+        <div className={errorMessage}><Alert whichAlert="login" /></div>
       </form>
 
       <form className={`"signUpForm" ${hideSignup}`} onSubmit={handleSubmitSignUp}>
@@ -142,7 +169,7 @@ function LoginSignupForm() {
         <label htmlFor="password" >Password:</label>
         <input onChange={handleChange} value={formData.password} name="password"></input><br />
         <button type="submit">Submit</button>
-        <div className={errorMessage}><Alert whichAlert="register"/></div>
+        <div className={errorMessage}><Alert whichAlert="register" /></div>
       </form>
     </div>
   )
