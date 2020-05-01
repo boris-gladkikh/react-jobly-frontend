@@ -5,8 +5,8 @@ import TokenContext from "./TokenContext";
 import { useHistory } from "react-router-dom";
 
 //renders navbar on every page, depending on logged in status of user
-function NavBar() {
-  const {token, setToken} = useContext(TokenContext);
+function NavBar({currentUser, setCurrentUser}) {
+  const {setToken} = useContext(TokenContext);
   const history = useHistory();
 
 // upon logout, clears localStorage, resets token state (context) and redirects
@@ -14,11 +14,13 @@ function NavBar() {
   function handleLogout(){
     window.localStorage.clear();
     setToken("");
+    setCurrentUser({});
     console.log("localStorage is:", localStorage);
     history.push('/');
   }
 //authenticates which navbar to render based on token state 
-  if(token !== ""){
+  
+  if(currentUser.username){
   return (
     <nav>
       <ul>

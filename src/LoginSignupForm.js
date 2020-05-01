@@ -20,7 +20,7 @@ function LoginSignupForm() {
   }
   const [hideLogin, setHideLogin] = useState('Hidden');
   const [hideSignup, setHideSignup] = useState('Hidden');
-  //spread initial data insite formData state, so there's no way for anyone to edit OG reference!!!
+  //spread initial data insise formData state, so there's no way for anyone to edit OG reference!!!
   const [formData, setFormData] = useState({...initialData});
   const [logginIn, setlogginIn] = useState(false);
   const [signingUp, setsigningUp] = useState(false);
@@ -37,12 +37,13 @@ function LoginSignupForm() {
   useEffect(function registerOrLogin() {
     async function logIn() {
       /*uses login request method, sets token state with response, saves token in 
-localStorage, redirects to companies once logged in via history */
+      localStorage, redirects to companies once logged in via history */
 
       try {
         console.log("dologin is happening");
         let response = await JoblyApi.login(formData);
         window.localStorage.setItem('token', response);
+        window.localStorage.setItem('username', formData.username);
         setToken(response);
         history.push("/companies");
       }
@@ -59,7 +60,7 @@ localStorage, redirects to companies once logged in via history */
     async function signUp() {
 
       /*uses register request method, sets token state with response, saves token in 
-localStorage, redirects to companies once logged in via history */
+      localStorage, redirects to companies once logged in via history */
 
       try {
         let response = await JoblyApi.signup(formData);

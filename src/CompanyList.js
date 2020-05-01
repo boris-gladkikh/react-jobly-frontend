@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import CompanyCard from "./CompanyCard";
 
 /**CompanyList: Component that renders list of CompanyCards */
-function CompanyList() {
+function CompanyList({currentUser}) {
   const [companies, setCompanies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,18 +12,18 @@ function CompanyList() {
   useEffect(() => {
     async function getCompanies() {
       try {
-        let resp = await JoblyApi.getAllCompanies()
+        let resp = await JoblyApi.getAllCompanies();
         setCompanies(resp);
       } catch (err) {
-        //TODO more obvious error message
         console.error('server failed', err);
-        alert('Server failed, sorry!');
       }finally{
         setIsLoading(false);
       }
     }
     getCompanies();
+
   }, [setCompanies]);
+
 
 //runs on search bar if search bar is used, passed to search bar component in props
   function companyListSearch(filteredCompanies){
@@ -37,8 +37,11 @@ function CompanyList() {
         Loading...
       </div>
     );
-  } else {
-
+  } else if(!currentUser.username) {
+    return(
+      <h1>UNAUTHORIZED!</h1>
+    )
+  }else{
     return (
       <div>
         <SearchBar whichSearch='companies' searchCompanies={companyListSearch}/>
@@ -55,7 +58,6 @@ function CompanyList() {
 
       </div>
     )
-
   }
 }
 

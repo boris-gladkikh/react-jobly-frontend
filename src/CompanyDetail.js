@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import JoblyApi from "./HelperApi";
 import { useParams } from "react-router-dom";
 import JobCard from './JobCard';
 
-function CompanyDetail(){
-  const[company, setCompany] = useState({});
+function CompanyDetail({ currentUser }) {
+  const [company, setCompany] = useState({});
   let { name } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,7 +19,7 @@ function CompanyDetail(){
         setCompany(resp);
       } catch (err) {
         console.error(err);
-      }finally{
+      } finally {
         setIsLoading(false);
       }
     }
@@ -28,24 +28,30 @@ function CompanyDetail(){
 
 
   // If isLoading state is false render jobcard, otherwise show loading...
-  if(!isLoading){
-    return(
+  if (isLoading) {
+
+    return (<div>"Loading..."</div>);
+
+  } else if (!currentUser.username) {
+    return (
+      <h1>UNAUTHORIZED!</h1>
+    );
+  } else {
+    return (
       <div>
         <h3>{company.name}</h3>
         <p>{company.description}</p>
         <div>{company.jobs.map(job => (
           <div>
             <JobCard
-            key={job.id}
-            title={job.title}
-            salary={job.salary}
-            equity={job.equity}/>
+              key={job.id}
+              title={job.title}
+              salary={job.salary}
+              equity={job.equity} />
           </div>
         ))}</div>
       </div>
-    )
-  }else{
-    return(<div>"Loading..."</div>);
+    );
   }
 }
 

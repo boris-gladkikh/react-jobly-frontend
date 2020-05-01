@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import JobCard from "./JobCard";
 
 /**JobList: Component that renders list of JobCards */
-function JobList() {
+function JobList({currentUser}) {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -15,7 +15,6 @@ function JobList() {
         let resp = await JoblyApi.getAllJobs()
         setJobs(resp);
       } catch (err) {
-        alert('Server failed, sorry!');
         console.error(err);
       }finally {
         setIsLoading(false);
@@ -37,7 +36,11 @@ function JobList() {
         Loading...
       </div>
     )
-  } else {
+  } else if(!currentUser.username) {
+    return(
+      <h1>UNAUTHORIZED!</h1>
+    )
+  }else{
 
     return (
       <div>
