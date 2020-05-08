@@ -13,7 +13,7 @@ function NavBar({currentUser, setCurrentUser}) {
 //back to homepage via history
   function handleLogout(){
     window.localStorage.clear();
-    setToken("");
+    setToken(undefined);
     setCurrentUser({});
     console.log("localStorage is:", localStorage);
     history.push('/');

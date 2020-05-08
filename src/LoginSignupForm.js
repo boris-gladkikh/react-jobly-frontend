@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import TokenContext from "./TokenContext";
 import Alert from './Alert';
 import "./login.css";
+import {Form, Label,Input, Button} from "reactstrap";
 
 // parent component of alert, child component of homepage,routes
 //renders forms, sends request, receives token or error based on response,
@@ -139,22 +140,21 @@ function LoginSignupForm() {
     setHideSignup("Hidden");
   }
 
-
   return (
     <div>
 
-      <button onClick={handleLoginButton}>Login</button>
-      <button onClick={handleRegisterButton}>Register</button>
-      <form className={`"loginForm" ${hideLogin}`} onSubmit={handleSubmitLogin}>
-        <label htmlFor="username">Username:</label>
-        <input onChange={handleChange} value={formData.username} name="username"></input><br />
-        <label htmlFor="password" >Password:</label>
-        <input onChange={handleChange} value={formData.password} name="password"></input><br />
-        <button type="submit">Submit</button>
+      <Button color="primary" onClick={handleLoginButton}>Login</Button>
+      <Button onClick={handleRegisterButton}>Register</Button>
+      <Form className={`"loginForm" registerform ${hideLogin}`} onSubmit={handleSubmitLogin}>
+        <Label htmlFor="username">Username:</Label>
+        <Input onChange={handleChange} value={formData.username} name="username"></Input><br />
+        <Label htmlFor="password" >Password:</Label>
+        <Input onChange={handleChange} value={formData.password} name="password"></Input><br />
+        <button className="registerButton" type="submit">Submit</button>
         <div ><Alert errors={errorMessage} /></div>
-      </form>
+      </Form>
 
-      <form className={`"signUpForm" ${hideSignup}`} onSubmit={handleSubmitSignUp}>
+      <form className={`"signUpForm" registerform ${hideSignup}`} onSubmit={handleSubmitSignUp}>
         <label htmlFor="first_name">First Name:</label>
         <input onChange={handleChange} value={formData.first_name} name="first_name"></input><br />
         <label htmlFor="last_name">Last Name:</label>

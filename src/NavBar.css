@@ -1,6 +1,14 @@
 
 nav {
+  top: 0px;
+  text-align: left;
   border: 1px solid black;
+  /* background-color: #FFF3DC; */
+  background-color: #2E86C1;
+  padding: 25px;
+  /* position: fixed; */
+  width: 100%;
+  color: white;
 
 }
 li {
@@ -10,9 +18,14 @@ li {
 
 a {
   text-decoration: none;
+  color: black;
 
 }
 
 a.active {
-  color: black;
+  color: white;
+}
+
+a:hover {
+  color: pink;
 }

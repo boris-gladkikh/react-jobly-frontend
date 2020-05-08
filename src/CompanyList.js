@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from "./HelperApi";
 import SearchBar from "./SearchBar";
 import CompanyCard from "./CompanyCard";
+import "./CompanyList.css";
 
 /**CompanyList: Component that renders list of CompanyCards */
 function CompanyList({currentUser}) {
@@ -45,7 +46,7 @@ function CompanyList({currentUser}) {
     return (
       <div>
         <SearchBar whichSearch='companies' searchCompanies={companyListSearch}/>
-        <div>
+        <div className="companycontainer">
           {companies.map(({ name, logo_url, description, handle }) =>
             <CompanyCard
               key={handle}

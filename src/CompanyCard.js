@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import "./CompanyCard.css"
 
 /**CompanyCard: Child component to CompanyList
  * renders information about company
@@ -8,7 +9,7 @@ import { Link } from "react-router-dom";
 function CompanyCard({ name, description, logoUrl, handle }) {
   return (
     <Link className="CompanyList-Link" to={`/companies/${handle}`}>
-      <div>
+      <div className="companycard">
         <h1>{name}</h1>
         <p>{description}</p>
         <img src={logoUrl} alt="company logo" />

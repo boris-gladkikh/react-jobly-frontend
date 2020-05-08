@@ -17,7 +17,7 @@ import JoblyApi from "./HelperApi";
 function Routes() {
   const [token, setToken] = useState("");
   const [currentUser, setCurrentUser] = useState({});
-  console.log(token);
+  console.log("this is the token in Routes",token);
 
   //get the current user
   useEffect(function getUser() {

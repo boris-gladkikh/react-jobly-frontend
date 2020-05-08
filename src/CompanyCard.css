@@ -1,0 +1,14 @@
+.companycard{
+  border: 1px solid black;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  background-color: #2E86C1;
+  color: white;
+  padding:20px;
+}
+
+.companycard a:hover {
+  color: pink;
+}
