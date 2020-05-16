@@ -44,6 +44,9 @@ function JobList({currentUser}) {
 
     return (
       <div>
+         <h1>These jobs are available now!</h1>
+        <h3>Click on the apply button to automatically apply.</h3>
+        <p> You can find a list of all jobs applied to on your profile page.</p>
         <SearchBar whichSearch='jobs' searchJobs={jobListSearch} />
         <div>
           {jobs.map(({ title, salary, equity, id }) =>

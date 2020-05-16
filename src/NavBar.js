@@ -28,7 +28,7 @@ function NavBar({currentUser, setCurrentUser}) {
         <li><NavLink exact to="/companies">Companies</NavLink></li>
         <li><NavLink exact to="/jobs">Jobs</NavLink></li>
         <li><NavLink exact to="/profile">Profile</NavLink></li>
-        <li><NavLink exact to="/" onClick={handleLogout} >Log Out</NavLink></li>
+        <li><NavLink exact to="/login" onClick={handleLogout} >Log Out</NavLink></li>
       </ul>
     </nav>
   )

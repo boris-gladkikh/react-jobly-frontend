@@ -5,7 +5,7 @@ import CompanyCard from "./CompanyCard";
 import "./CompanyList.css";
 
 /**CompanyList: Component that renders list of CompanyCards */
-function CompanyList({currentUser}) {
+function CompanyList({ currentUser }) {
   const [companies, setCompanies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +17,7 @@ function CompanyList({currentUser}) {
         setCompanies(resp);
       } catch (err) {
         console.error('server failed', err);
-      }finally{
+      } finally {
         setIsLoading(false);
       }
     }
@@ -26,9 +26,9 @@ function CompanyList({currentUser}) {
   }, [setCompanies]);
 
 
-//runs on search bar if search bar is used, passed to search bar component in props
-  function companyListSearch(filteredCompanies){
-    setCompanies(filteredCompanies); 
+  //runs on search bar if search bar is used, passed to search bar component in props
+  function companyListSearch(filteredCompanies) {
+    setCompanies(filteredCompanies);
   }
 
   //change to state
@@ -38,14 +38,17 @@ function CompanyList({currentUser}) {
         Loading...
       </div>
     );
-  } else if(!currentUser.username) {
-    return(
-      <h1>UNAUTHORIZED!</h1>
-    )
-  }else{
+  } else {
     return (
       <div>
-        <SearchBar whichSearch='companies' searchCompanies={companyListSearch}/>
+        <h1>These companies are hiring now!</h1>
+        <img className="companyListPhoto" alt="stock company img" src="https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></img>
+        <p>
+          Our company list is growing every day. See the most in-demand
+          jobs at the hottest companies!
+        </p>
+        <h3>Click on a company to see a job list</h3>
+        <SearchBar whichSearch='companies' searchCompanies={companyListSearch} />
         <div className="companycontainer">
           {companies.map(({ name, logo_url, description, handle }) =>
             <CompanyCard

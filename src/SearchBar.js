@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import JoblyApi from "./HelperApi";
+import "./SearchBar.css"
 
 
 
@@ -57,9 +58,9 @@ function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="search">Search:</label>
-        <input onChange={handleChange} name="search" type="text" />
-        <button type="submit">Go</button>
+        <label htmlFor="search"></label>
+        <input className="searchBar" onChange={handleChange} name="search" placeholder="Search"type="text" />
+        <button className="searchButton" type="submit">Go</button>
       </form>
     </div>
   );

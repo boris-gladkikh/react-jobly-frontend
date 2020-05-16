@@ -13,3 +13,9 @@
 .jobcard a:hover {
   color: pink;
 }
+
+.applybutton {
+  color:white;
+  padding: 10px;
+  background-color: tomato;
+}

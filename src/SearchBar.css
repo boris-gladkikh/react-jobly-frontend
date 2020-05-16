@@ -1,0 +1,17 @@
+.searchBar{
+  padding: 10px;
+}
+
+.searchButton{
+  padding: 10px;
+  
+}
+.searchButton:hover{
+  background-color: tomato;
+  color: white;
+}
+
+.searchButton:active {
+  color: white;
+  background-color: blue;;
+}

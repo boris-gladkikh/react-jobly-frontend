@@ -1,3 +1,14 @@
 .cardbody {
   margin: 5px;
 }
+
+.aboutBlurb {
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  margin-bottom: 10px;
+ }
+
+ .companyPhoto {
+   width: 500px;
+ }

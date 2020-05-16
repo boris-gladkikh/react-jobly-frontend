@@ -9,6 +9,7 @@
   padding:20px;
 }
 
-.companycard a:hover {
-  color: pink;
+.companycard:hover {
+  background-color: teal;
+
 }

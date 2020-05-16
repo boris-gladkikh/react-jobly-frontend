@@ -1,17 +1,37 @@
+Misc
+  -Add redux! use login with redux. Look into redux persist!
+  -usew redux for handling apply/applying, and for storing token,
+  user data in redux
+    REDUX
+      -user data
+      -jobs applied
+      -to persist local storage
+
+
 ProfileForm
   -fix patch request, and updating profile data!!!
+  -remove see applied jobs button - put list of applied jobs in profile page.
+  -if no profile photo  on file, use default photo
+
+JobCard
+  -change applied button background color 
+  -put 'about this company' above desccription
+
+Footer
+  -make footer, contact link, my information
 
 
 SearchBar
-  -make less ugly
+  -add career cat logo
 
 
 companies
-  -add apply/applied button
+  -add apply/applied functionality to button (redux)
+
 
 ****BUG****
 when registering a new user, 
-rredirects to UNAUTHORIZED! 
+redirects to UNAUTHORIZED! 
 
 get authorization/authentication working!
 
@@ -27,18 +47,4 @@ finish assignment!
 -profile page with photo
 
 
-MAYBE:
--once assignment is done:
-  -redo site as a 'gig' site 
-  -user can post gigs, change 'companies' to users
-  -user has gigs
-  -other users can respond to gigs (apply/applied)
-  -if accepted, gigs notify user to accept or reject
-
-
-
-
-Random
-  -create logo for jobly
-  -rename jobly to Career-Cat
 
