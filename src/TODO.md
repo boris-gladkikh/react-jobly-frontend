@@ -1,11 +1,3 @@
-Misc
-  -Add redux! use login with redux. Look into redux persist!
-  -usew redux for handling apply/applying, and for storing token,
-  user data in redux
-    REDUX
-      -user data
-      -jobs applied
-      -to persist local storage
 
 
 ProfileForm
@@ -27,6 +19,17 @@ SearchBar
 
 companies
   -add apply/applied functionality to button (redux)
+
+  Misc
+  -Add redux! use login with redux. Look into redux persist!
+  -usew redux for handling apply/applying, and for storing token,
+  user data in redux
+    REDUX
+      -user data
+      -jobs applied
+      -to persist local storage
+
+add 
 
 
 ****BUG****

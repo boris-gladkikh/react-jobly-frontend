@@ -41,7 +41,6 @@ function LoginSignupForm() {
       localStorage, redirects to companies once logged in via history */
 
       try {
-        console.log("dologin is happening");
         let response = await JoblyApi.login(formData);
         window.localStorage.setItem('token', response);
         window.localStorage.setItem('username', formData.username);
@@ -146,25 +145,25 @@ function LoginSignupForm() {
       <Button color="primary" onClick={handleLoginButton}>Login</Button>
       <Button onClick={handleRegisterButton}>Register</Button>
       <Form className={`"loginForm" registerform ${hideLogin}`} onSubmit={handleSubmitLogin}>
-        <Label htmlFor="username">Username:</Label>
-        <Input onChange={handleChange} value={formData.username} name="username"></Input><br />
-        <Label htmlFor="password" >Password:</Label>
-        <Input onChange={handleChange} value={formData.password} name="password"></Input><br />
+        <Label htmlFor="username"></Label>
+        <Input  placeholder="Username" onChange={handleChange} value={formData.username} name="username"></Input><br />
+        <Label htmlFor="password" ></Label>
+        <Input  type="password"  placeholder="Password" onChange={handleChange} value={formData.password} name="password"></Input><br />
         <button className="registerButton" type="submit">Submit</button>
         <div ><Alert errors={errorMessage} /></div>
       </Form>
 
       <form className={`"signUpForm" registerform ${hideSignup}`} onSubmit={handleSubmitSignUp}>
-        <label htmlFor="first_name">First Name:</label>
-        <input onChange={handleChange} value={formData.first_name} name="first_name"></input><br />
-        <label htmlFor="last_name">Last Name:</label>
-        <input onChange={handleChange} value={formData.last_name} name="last_name"></input><br />
-        <label htmlFor="email">E-mail:</label>
-        <input onChange={handleChange} value={formData.email} name="email"></input><br />
-        <label htmlFor="username">Username:</label>
-        <input onChange={handleChange} value={formData.username} name="username"></input><br />
-        <label htmlFor="password" >Password:</label>
-        <input onChange={handleChange} value={formData.password} name="password"></input><br />
+        <label htmlFor="first_name"></label>
+        <input placeholder="First Name"onChange={handleChange} value={formData.first_name} name="first_name"></input><br />
+        <label htmlFor="last_name"></label>
+        <input placeholder="Last Name" onChange={handleChange} value={formData.last_name} name="last_name"></input><br />
+        <label htmlFor="email"></label>
+        <input placeholder="Email" onChange={handleChange} value={formData.email} name="email"></input><br />
+        <label htmlFor="username"></label>
+        <input placeholder="Username" onChange={handleChange} value={formData.username} name="username"></input><br />
+        <label htmlFor="password" ></label>
+        <input placeholder="Password" onChange={handleChange} value={formData.password} name="password" type="password"></input><br />
         <button type="submit">Submit</button>
         <div ><Alert errors={errorMessage} /></div>
       </form>

@@ -6,15 +6,12 @@ import "./jobcard.css";
  * renders job information
  */
 function JobCard({ title, salary, equity }) {
-  const  [Applied, setApplied] = useState(false)
+  const  [Applied, setApplied] = useState(false);
+
 
   function handleApply(evt){
     evt.preventDefault();
-    setApplied(true);
-  }
-  function handleUnapply(evt){
-    evt.preventDefault();
-    setApplied(false);
+    setApplied(!Applied);
   }
 
   return (
@@ -25,7 +22,7 @@ function JobCard({ title, salary, equity }) {
         <h4>Equity:{equity}</h4>
         {(Applied === false) ? 
         <button onClick={handleApply}>Apply Now</button> :
-        <button onClick={handleUnapply}>Applied</button>
+        <button onClick={handleApply}>Applied</button>
 }
       </div>
     // </Link>

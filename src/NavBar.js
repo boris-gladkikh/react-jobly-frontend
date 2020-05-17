@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useReducer} from 'react';
 import { NavLink } from 'react-router-dom';
 import "./NavBar.css";
 import TokenContext from "./TokenContext";
@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 //renders navbar on every page, depending on logged in status of user
 function NavBar({currentUser, setCurrentUser}) {
-  const {setToken} = useContext(TokenContext);
+  const {token, setToken} = useContext(TokenContext);
   const history = useHistory();
 
 // upon logout, clears localStorage, resets token state (context) and redirects
@@ -24,7 +24,7 @@ function NavBar({currentUser, setCurrentUser}) {
   return (
     <nav>
       <ul>
-        <li><NavLink exact to="/">Home</NavLink></li>
+        <li ><NavLink exact to="/">Home</NavLink></li>
         <li><NavLink exact to="/companies">Companies</NavLink></li>
         <li><NavLink exact to="/jobs">Jobs</NavLink></li>
         <li><NavLink exact to="/profile">Profile</NavLink></li>

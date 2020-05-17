@@ -4,20 +4,19 @@ import Homepage from "./Homepage";
 import CompanyList from "./CompanyList";
 import CompanyDetail from "./CompanyDetail";
 import JobList from "./JobList";
-import LoginSignupForm from "./LoginSignupForm";
 import ProfileForm from "./ProfileForm";
 import NavBar from "./NavBar";
 import TokenContext from "./TokenContext";
 import JoblyApi from "./HelperApi";
+import LoginPage  from "./LoginPage";
 
 
 
 //Routes handling our navigation to components
 //Switch handles our routes, Nav bar shows up on each page
 function Routes() {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [currentUser, setCurrentUser] = useState({});
-  console.log("this is the token in Routes",token);
 
   //get the current user
   useEffect(function getUser() {
@@ -50,7 +49,7 @@ function Routes() {
           <Homepage />
         </Route>
         <Route exact path="/login">
-          <LoginSignupForm  />
+          <LoginPage  />
         </Route>
         {!!token && (<><Route exact path="/companies">
           <CompanyList currentUser={currentUser}/>
