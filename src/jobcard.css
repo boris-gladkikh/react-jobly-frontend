@@ -1,12 +1,13 @@
 .jobcard {
-  border: 1px solid black;
-  width: 60%;
+  border-bottom: 1px solid black;
+  width: 20%;
+  height: 20%;
   margin: auto;
   margin-bottom: 5px;
   margin-top: 5px;
-  background-color: #2E86C1;
-  color: white;
-  padding:20px;
+  /* background-color: #2E86C1; */
+  color: black;
+  padding:5px;
 
 }
 

@@ -39,8 +39,9 @@ function CompanyDetail({ currentUser }) {
   } else {
     return (
       <div>
-        <h3>{company.name}</h3>
+        <h1 className="underline">{company.name}</h1>
         <p>{company.description}</p>
+        <h4 >Click on the apply button to automatically apply.</h4>
         <div>{company.jobs.map(job => (
           <div>
             <JobCard

@@ -1,15 +1,20 @@
 .companycard{
   border: 1px solid black;
-  width: 80%;
+  width: 50%;
   margin: auto;
   margin-bottom: 5px;
   margin-top: 5px;
-  background-color: #2E86C1;
+  background-color: rgb(99, 106, 110);
   color: white;
-  padding:20px;
+  padding:5px;
 }
 
 .companycard:hover {
-  background-color: teal;
+  background-color: #2E86C1;
 
 }
+
+.companyLogo {
+  width: 200px;
+}
+

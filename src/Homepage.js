@@ -26,13 +26,13 @@ function HomePage() {
         <img className="companyPhoto" src="https://images.pexels.com/photos/7097/people-coffee-tea-meeting.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></img>
       <h3>Find Your Purpose. Find Your Culture.</h3>
         <p className="aboutBlurb">
-        Not only does Career cat offer the  most competitive cutting-edge jobs  
+        Not only does Career Cat offer the  most competitive cutting-edge jobs  
         for our users; We want our users to find their ideal company environment. 
         We want to link companies with the perfect employee, from work-life balance, to relevant skillset, to social environment.
         We don't just want you to find a new job - we want you to find your new work family. 
-        Career cat also has plenty of benefits for companies to sign up, from editing and adding positions and information 
+        Career Cat also has plenty of benefits for company accounts, from editing and adding positions and information 
         on the fly, to expansive powerful admin features. More and more features are being 
-        added daily - Career cat is a growing company!
+        added daily - Career Cat is a growing company!
         </p>
         <h4>Log in or sign up to start your search today.</h4>
         <Link to="/login"><button>Log In/Register</button></Link>
