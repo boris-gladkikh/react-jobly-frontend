@@ -75,24 +75,20 @@ function ProfileForm({ currentUser }) {
     ));
   }
 
-  //  function onChange(evt) {
-  //   const { name, value } = evt.target;
-  //   setPostFormData(currentData => (
-  //     {
-  //       ...currentData,
-  //       [name]: value
-  //     }
-  //   ));
-  // }
 
   function toggleFormButton() {
     setShowForm(!showForm);
   }
 
+  function handleUnapply(){}
+
   //renders list of jobs if currentUser has any - otherwise returns 'no jobs'
 
-  const jobsApplied = (userJobs) ? "No Jobs Yet!" : "THEMS JOBS";
+  let jobsApplied = 
+    userJobs.map(job=><p>{job.title} <button className="smallDeleteButton" onClick={handleUnapply}>X</button></p>)
 
+
+  console.log("these are user's jobs in profileForm \n\n", userJobs);
 
   if (isLoading === true) {
     return (
@@ -135,11 +131,11 @@ function ProfileForm({ currentUser }) {
           <label htmlFor="last_name"></label>
           <input placeholder="Last Name" onChange={handleChange} value={formData.last_name} name="last_name"></input><br />
           <label htmlFor="email"></label>
-          <input  placeholder="Email"onChange={handleChange} value={formData.email} name="email"></input><br />
+          <input placeholder="Email" onChange={handleChange} value={formData.email} name="email"></input><br />
           <label htmlFor="password" ></label>
-          <input  placeholder="Re-Enter Password" onChange={handleChange} name="password"></input><br />
+          <input placeholder="Re-Enter Password" onChange={handleChange} name="password"></input><br />
           <label htmlFor="photo_url" ></label>
-          <input  placeholder="Photo URL" onChange={handleChange} name="photo_url"></input><br />
+          <input placeholder="Photo URL" onChange={handleChange} name="photo_url"></input><br />
           <button type="submit">Submit</button>
           <button onClick={toggleFormButton} type="button">Cancel</button>
 

@@ -6,25 +6,30 @@ import JoblyApi from './HelperApi';
 /**JobCard: Child component to JobList
  * renders job information
  */
-function JobCard({ key, title, salary, equity, company, username }) {
+function JobCard({ jobId, title, salary, equity, company, username }) {
   const [Applied, setApplied] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
+  //TODO: Figure out if you should use useEffect?
+  //do you need to do usecallback, or another state?
   //apply to job via backend server - NEED TO FIGURE OUT WHERE TO MOVE THIS:
+  //
 
   async function applyForJob() {
     let data = {
-      state: "apply",
+      state: "Applied",
       username
     }
-    //"key" is the jobId passed down  as prop 
-    try{
-      let response = await JoblyApi.applyForJob(key, data);
-      console.log("this is response from applying for a job", response)
-
+    try {
+      let response = await JoblyApi.applyForJob(jobId, data);
+      console.log("this is response from applying for a job", response);
+      alert(response);
+      setIsLoading(false);
+      setApplied(true);
     }
-    catch(err){
+    catch (err) {
       console.error(err);
-      
+
     }
 
   }
@@ -32,43 +37,46 @@ function JobCard({ key, title, salary, equity, company, username }) {
 
   function handleApply(evt) {
     evt.preventDefault();
-    setApplied(!Applied);
-  }
-
-  function handleUnapply(evt) {
-    evt.preventDefault();
-    setApplied(!Applied);
+    setIsLoading(true);
+    applyForJob();
   }
 
 
+  if (isLoading === true) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    )
+  } else {
 
-  return (
-    // <Link className="JobList-Link" to={`/jobs/`}>
-    <div className="jobcard">
-      <div >
-        {/* <img className="jobLogo" src={"https://fintechng.org/portal/assets/img/logo-default.svg"} alt="placeholder logo" /> */}
-        <img className="jobLogo" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQH_7OLqOFIPt56IigyUUem3B4als0iVFAp1qk4yWXrAuC3BDTi&usqp=CAU"} alt="placeholder logo" />
+    return (
+      // <Link className="JobList-Link" to={`/jobs/`}>
+      <div className="jobcard">
+        <div >
+          <img className="jobLogo" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQH_7OLqOFIPt56IigyUUem3B4als0iVFAp1qk4yWXrAuC3BDTi&usqp=CAU"} alt="placeholder logo" />
+
+        </div>
+        <div className="jobCardText">
+          <h4>{title}</h4>
+          {company}
+          <p>
+            <b>Salary: </b>{salary}<br />
+            <b>Equity: </b>{equity}<br />
+          </p>
+        </div>
+        <div className="jobCardButton">
+          {(Applied === false) ?
+            <button onClick={handleApply}>Apply Now</button> :
+            <button>Applied</button>
+          }
+        </div>
+
 
       </div>
-      <div className="jobCardText">
-        <h4>{title}</h4>
-        {company}
-        <p>
-          <b>Salary: </b>{salary}<br />
-          <b>Equity: </b>{equity}<br />
-        </p>
-      </div>
-      <div className="jobCardButton">
-        {(Applied === false) ?
-          <button onClick={handleApply}>Apply Now</button> :
-          <button onClick={handleApply}>Applied</button>
-        }
-      </div>
-
-
-    </div>
-    // </Link>
-  );
+      // </Link>
+    );
+  }
 
 }
 

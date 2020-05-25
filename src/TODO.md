@@ -1,34 +1,21 @@
 
+TODO 5/22/2020:
+- figure out where to put function! - on job card right now - put it on job list?
+- pass down function to jobList
+- add delete button onto jobs applied in profile form.
+- write unapply function - may have to write it in BACKEND SERVER
+- profileForm= jobsAPplied should be useEffect, that triggers initially, then everytime unapply is clicked
+- break up profile form into profile + form? 
+
 
 ProfileForm
-  -remove see applied jobs button - put list of applied jobs in profile page.
   -if no profile photo on file, use default photo
-
-JobCard
-  -change applied button background color 
-  -put 'about this company' above desccription
 
 Footer
   -make footer, contact link, my information
 
 
-SearchBar
-  -add career cat logo
-
-
-companies
-  -add apply/applied functionality to button (redux)
-
-  Misc
-  -Add redux! use login with redux. Look into redux persist!
-  -usew redux for handling apply/applying, and for storing token,
-  user data in redux
-    REDUX
-      -user data
-      -jobs applied
-      -to persist local storage
-
-add 
+-fix authentication - use token rather than localStorage! (CHECK SOLUTION?)
 
 
 ****BUG****
@@ -43,7 +30,6 @@ all forms: remove labels, use placeholders
 finish assignment!
 -logging in/out
 -authorization
--add jobs feature
 
 
 

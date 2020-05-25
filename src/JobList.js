@@ -5,7 +5,7 @@ import JobCard from "./JobCard";
 import "./JobList.css";
 
 /**JobList: Component that renders list of JobCards */
-function JobList({currentUser}) {
+function JobList({ currentUser }) {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +17,7 @@ function JobList({currentUser}) {
         setJobs(resp);
       } catch (err) {
         console.error(err);
-      }finally {
+      } finally {
         setIsLoading(false);
       }
     }
@@ -34,19 +34,20 @@ function JobList({currentUser}) {
   if (isLoading) {
     return (
       <div>
-        Loading...
+        <h1>
+          Loading...
+       </h1>
       </div>
     )
-  } else if(!currentUser.username) {
-    return(
+  } else if (!currentUser.username) {
+    return (
       <h1>UNAUTHORIZED!</h1>
     )
-  }else{
-    console.log(jobs)
+  } else {
 
     return (
       <div>
-         <h1>These jobs are available!</h1>
+        <h1>These jobs are available!</h1>
         <h3>Click on the apply button to automatically apply.</h3>
         <p> You can find a list of all jobs applied to on your profile page.</p>
         <SearchBar whichSearch='jobs' searchJobs={jobListSearch} />
@@ -54,10 +55,12 @@ function JobList({currentUser}) {
           {jobs.map(({ title, salary, equity, id, company_handle }) =>
             <JobCard
               key={id}
+              jobId={id}
               title={title}
               salary={salary}
               equity={equity}
               company={company_handle}
+              username={currentUser.username}
             />)}
         </div>
 

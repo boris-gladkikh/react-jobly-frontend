@@ -90,7 +90,7 @@ class JoblyApi {
   static async applyForJob(jobId, data){
     let res = await this.request(`jobs/${jobId}/apply`, data, "post");
     //find out what this returns!
-    return res;
+    return res.message;
   }
 
 }

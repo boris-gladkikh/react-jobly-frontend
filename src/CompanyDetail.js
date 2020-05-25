@@ -44,11 +44,12 @@ function CompanyDetail({ currentUser }) {
         <div>{company.jobs.map(job => (
           <div>
             <JobCard
+              jobId={job.id}
               key={job.id}
               title={job.title}
               salary={job.salary}
-              equity={job.equity} 
-              username={currentUser.username}/>
+              equity={job.equity}
+              username={currentUser.username} />
           </div>
         ))}</div>
       </div>
