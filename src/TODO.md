@@ -1,9 +1,8 @@
 
 
 ProfileForm
-  -fix patch request, and updating profile data!!!
   -remove see applied jobs button - put list of applied jobs in profile page.
-  -if no profile photo  on file, use default photo
+  -if no profile photo on file, use default photo
 
 JobCard
   -change applied button background color 
@@ -42,12 +41,9 @@ get authorization/authentication working!
 all forms: remove labels, use placeholders
 
 finish assignment!
--profile
 -logging in/out
 -authorization
--button on jobs
 -add jobs feature
--profile page with photo
 
 
 

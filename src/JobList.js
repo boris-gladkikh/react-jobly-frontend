@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import JoblyApi from "./HelperApi";
 import SearchBar from "./SearchBar";
 import JobCard from "./JobCard";
+import "./JobList.css";
 
 /**JobList: Component that renders list of JobCards */
 function JobList({currentUser}) {
@@ -46,7 +47,6 @@ function JobList({currentUser}) {
     return (
       <div>
          <h1>These jobs are available!</h1>
-         <img className="companyPhoto" src="https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></img>
         <h3>Click on the apply button to automatically apply.</h3>
         <p> You can find a list of all jobs applied to on your profile page.</p>
         <SearchBar whichSearch='jobs' searchJobs={jobListSearch} />

@@ -12,7 +12,6 @@ function CompanyDetail({ currentUser }) {
   // handle error if call went wrong
   // set isLoading state back to false 
   useEffect(() => {
-    console.log('use effect working');
     async function getCompany() {
       try {
         let resp = await JoblyApi.getCompany(name);
@@ -39,8 +38,8 @@ function CompanyDetail({ currentUser }) {
   } else {
     return (
       <div>
-        <h1 className="underline">{company.name}</h1>
-        <p>{company.description}</p>
+        <h1><u>{company.name}</u></h1>
+        <p><b>Description: </b>{company.description}</p>
         <h4 >Click on the apply button to automatically apply.</h4>
         <div>{company.jobs.map(job => (
           <div>
@@ -48,7 +47,8 @@ function CompanyDetail({ currentUser }) {
               key={job.id}
               title={job.title}
               salary={job.salary}
-              equity={job.equity} />
+              equity={job.equity} 
+              username={currentUser.username}/>
           </div>
         ))}</div>
       </div>

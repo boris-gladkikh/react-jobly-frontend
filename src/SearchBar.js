@@ -56,7 +56,7 @@ function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
   }, [searchClick, filterSearch, formData]);
 
   return (
-    <div>
+    <div className="searchContainer">
       <form onSubmit={handleSubmit}>
         <label htmlFor="search"></label>
         <input className="searchBar" onChange={handleChange} name="search" placeholder="Search"type="text" />

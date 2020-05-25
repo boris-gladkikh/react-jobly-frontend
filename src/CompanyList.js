@@ -42,14 +42,12 @@ function CompanyList({ currentUser }) {
     return (
       <div>
         <h1>These companies are hiring!</h1>
-        {/* <img className="companyListPhoto" alt="stock company img" src="https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"></img> */}
         <p>
           Our company list is growing every day. See the most in-demand
           jobs at the hottest companies!
         </p>
-        {/* <h3>Click on a company to see a job list.</h3> */}
-        <SearchBar whichSearch='companies' searchCompanies={companyListSearch} />
         <div className="companycontainer">
+          <SearchBar whichSearch='companies' searchCompanies={companyListSearch} />
           {companies.map(({ name, logo_url, description, handle }) =>
             <CompanyCard
               key={handle}
