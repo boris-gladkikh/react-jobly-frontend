@@ -44,6 +44,7 @@ function CompanyDetail({ currentUser }) {
         <div>{company.jobs.map(job => (
           <div>
             <JobCard
+              jobList={currentUser.jobs}
               jobId={job.id}
               key={job.id}
               title={job.title}

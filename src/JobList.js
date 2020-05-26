@@ -51,6 +51,7 @@ function JobList({ currentUser }) {
         <div>
           {jobs.map(({ title, salary, equity, id, company_handle }) =>
             <JobCard
+              jobList={currentUser.jobs}
               key={id}
               jobId={id}
               title={title}

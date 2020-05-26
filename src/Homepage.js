@@ -14,7 +14,7 @@ function HomePage() {
       <div>
         <h1> Welcome Back!</h1>
         <h3> Start your job search now.</h3>
-        <img className="companyPhoto" src="https://images.pexels.com/photos/6224/hands-people-woman-working.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></img><br />
+        <img className="companyPhoto" src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></img><br />
         <Link to="/companies"><button>Search</button></Link>
       </div>
     )

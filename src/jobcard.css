@@ -42,5 +42,12 @@
 .jobCardButton{
   margin-top: 50px;
 
+}
+
+.appliedButton {
+  background-color: lightskyblue;
+}
+.appliedButton:hover {
+  background-color: lightskyblue;
 
 }

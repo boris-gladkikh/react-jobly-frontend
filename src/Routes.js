@@ -4,7 +4,7 @@ import Homepage from "./Homepage";
 import CompanyList from "./CompanyList";
 import CompanyDetail from "./CompanyDetail";
 import JobList from "./JobList";
-import ProfileForm from "./ProfileForm";
+import Profile from "./Profile";
 import NavBar from "./NavBar";
 import TokenContext from "./TokenContext";
 import JoblyApi from "./HelperApi";
@@ -61,7 +61,7 @@ function Routes() {
           <JobList currentUser={currentUser}/>
         </Route>
         <Route exact path="/profile">
-          <ProfileForm currentUser={currentUser}/>
+          <Profile currentUser={currentUser}/>
         </Route></>)}
         <Redirect to="/" />
       </Switch>

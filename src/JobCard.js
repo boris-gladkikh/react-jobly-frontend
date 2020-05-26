@@ -6,7 +6,7 @@ import JoblyApi from './HelperApi';
 /**JobCard: Child component to JobList
  * renders job information
  */
-function JobCard({ jobId, title, salary, equity, company, username }) {
+function JobCard({ jobId, title, salary, equity, company, username, jobList }) {
   const [Applied, setApplied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,12 +23,11 @@ function JobCard({ jobId, title, salary, equity, company, username }) {
     try {
       let response = await JoblyApi.applyForJob(jobId, data);
       console.log("this is response from applying for a job", response);
-      alert(response);
       setApplied(true);
     }
     catch (err) {
       console.error(err);
-    } 
+    }
 
   }
 
@@ -39,40 +38,47 @@ function JobCard({ jobId, title, salary, equity, company, username }) {
     applyForJob();
   }
 
+
+
+let jobIdArray = jobList.map(j => j.id);
+
+
+
+
   //add to check if you already applied to this job prior by looking at currentUser jobs (pass thru props)
-  let applyButtonConditional =  (Applied === false) ?
-    <button onClick={handleApply}>Apply Now</button> :
-    <button>Applied</button>
-  
+  let applyButtonConditional = (jobIdArray.includes(jobId) || Applied === true) ?
+    <button className="appliedButton">Applied</button> :
+    <button onClick={handleApply}>Apply Now</button> 
 
 
 
 
-    return (
-      // <Link className="JobList-Link" to={`/jobs/`}>
-      <div className="jobcard">
-        <div >
-          <img className="jobLogo" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQH_7OLqOFIPt56IigyUUem3B4als0iVFAp1qk4yWXrAuC3BDTi&usqp=CAU"} alt="placeholder logo" />
 
-        </div>
-        <div className="jobCardText">
-          <h4>{title}</h4>
-          {company}
-          <p>
-            <b>Salary: </b>{salary}<br />
-            <b>Equity: </b>{equity}<br />
-          </p>
-        </div>
-        <div className="jobCardButton">
-          {applyButtonConditional}
-         
-        </div>
-
+  return (
+    // <Link className="JobList-Link" to={`/jobs/`}>
+    <div className="jobcard">
+      <div >
+        <img className="jobLogo" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQH_7OLqOFIPt56IigyUUem3B4als0iVFAp1qk4yWXrAuC3BDTi&usqp=CAU"} alt="placeholder logo" />
 
       </div>
-      // </Link>
-    );
-  
+      <div className="jobCardText">
+        <h4>{title}</h4>
+        {company}
+        <p>
+          <b>Salary: </b>{salary}<br />
+          <b>Equity: </b>{equity}<br />
+        </p>
+      </div>
+      <div className="jobCardButton">
+        {applyButtonConditional}
+
+      </div>
+
+
+    </div>
+    // </Link>
+  );
+
 
 }
 

@@ -7,6 +7,8 @@ TODO 5/22/2020:
 - profileForm= jobsAPplied should be useEffect, that triggers initially, then everytime unapply is clicked
 - break up profile form into profile + form? 
 
+- use state or use effect for apply now/applied functionality?
+
 
 ProfileForm
   -if no profile photo on file, use default photo
