@@ -39,10 +39,7 @@ function JobList({ currentUser }) {
        </h1>
       </div>
     )
-  } else if (!currentUser.username) {
-    return (
-      <h1>UNAUTHORIZED!</h1>
-    )
+
   } else {
 
     return (

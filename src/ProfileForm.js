@@ -85,7 +85,7 @@ function ProfileForm({ currentUser }) {
   //renders list of jobs if currentUser has any - otherwise returns 'no jobs'
 
   let jobsApplied = 
-    userJobs.map(job=><p>{job.title} <button className="smallDeleteButton" onClick={handleUnapply}>X</button></p>)
+    userJobs.map(job=><p>{job.title} <button className="smallDeleteButton" onClick={handleUnapply}>X</button></p>) || 
 
 
   console.log("these are user's jobs in profileForm \n\n", userJobs);
@@ -113,7 +113,7 @@ function ProfileForm({ currentUser }) {
         </div>
         <button onClick={toggleFormButton}>Edit Info</button>
         <h2>Jobs Applied:</h2>
-        {jobsApplied}
+        {jobsApplied.length === 0  ? "No Jobs yet":  jobsApplied}
 
 
       </div>

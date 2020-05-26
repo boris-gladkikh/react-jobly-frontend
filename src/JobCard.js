@@ -24,13 +24,11 @@ function JobCard({ jobId, title, salary, equity, company, username }) {
       let response = await JoblyApi.applyForJob(jobId, data);
       console.log("this is response from applying for a job", response);
       alert(response);
-      setIsLoading(false);
       setApplied(true);
     }
     catch (err) {
       console.error(err);
-
-    }
+    } 
 
   }
 
@@ -41,14 +39,14 @@ function JobCard({ jobId, title, salary, equity, company, username }) {
     applyForJob();
   }
 
+  //add to check if you already applied to this job prior by looking at currentUser jobs (pass thru props)
+  let applyButtonConditional =  (Applied === false) ?
+    <button onClick={handleApply}>Apply Now</button> :
+    <button>Applied</button>
+  
 
-  if (isLoading === true) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    )
-  } else {
+
+
 
     return (
       // <Link className="JobList-Link" to={`/jobs/`}>
@@ -66,17 +64,15 @@ function JobCard({ jobId, title, salary, equity, company, username }) {
           </p>
         </div>
         <div className="jobCardButton">
-          {(Applied === false) ?
-            <button onClick={handleApply}>Apply Now</button> :
-            <button>Applied</button>
-          }
+          {applyButtonConditional}
+         
         </div>
 
 
       </div>
       // </Link>
     );
-  }
+  
 
 }
 

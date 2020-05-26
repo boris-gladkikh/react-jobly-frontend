@@ -14,10 +14,11 @@
   margin: 5px;
   flex-direction: row;
   justify-content: center;
-
-
 }
 
-li {
-  display: block;
+.smallDeleteButton{
+  font-size: small;
+  border-radius: 0;
+  padding: 2px;
 }
+
