@@ -1,5 +1,22 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Career Cat
+
+Career Cat is a full stack job search application, which allows the user to create an account (with bcrypt security and password hashing), browse job listings by company or job, and single-click “apply” for a job. User can then see a list of applied jobs and edit their profile info on their profile page.
+
+
+
+## How To:
+
+- log in/register your user.
+- change/update profile via "profile" tab.
+- browse available jobs via "companies" tab, then click on companies to see what jobs they provide OR
+- browse all available jobs regardless of company
+- search bar capabilities to search by company name or position on both 'companies' and 'jobs' pages
+- single click "apply" button to apply to job
+- applied jobs can be seen on profile page
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -37,32 +54,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
