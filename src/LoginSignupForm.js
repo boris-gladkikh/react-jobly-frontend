@@ -68,6 +68,7 @@ function LoginSignupForm() {
         setToken(response);
         history.push("/companies");
       } catch (err) {
+        console.log("this is err thats breaking it",err)
         setErrorMessage(messages=>([
           ...messages, ...err
         ]));
