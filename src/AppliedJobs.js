@@ -8,7 +8,7 @@ function AppliedJobs({ userJobs }) {
 
   return (
     <div >
-      <h1> Jobs Applied</h1>
+      <h1 className="primary-font text-white"> Applied Jobs</h1>
       {jobsApplied.length === 0 ? "No Jobs yet" : jobsApplied}
 
     </div>

@@ -6,22 +6,22 @@ import logo from "./catlogo.png"
 function LoginPage() {
   return (
     <div className="app">
-      <img className="ccLogoBigger" src={logo} alt="cc logo"></img>
-      {/* <h2>Log In/Sign Up</h2> */}
 
+      <div className="mt-5 px-2">
+        <h1 className="primary-font"> Log in/Register</h1>
+        <h3 className="text-white secondary-font"> Start your job search now.</h3>
+        </div>
       <LoginSignupForm />
-      <div className="smolText">
-      <p>
-        <i>
+
+      <div className="mt-5">
+      <p className="secondary-font text-white">
         “The noblest pleasure is the joy of understanding.” – Leonardo da Vinci
-        </i>
         </p>
-      <p>
-        <i>
+      <p className="secondary-font text-white">
         “Find out what you like doing best, and get someone to pay you for doing it.” – Katharine Whitehorn
-        </i>
         </p>
       </div>
+
     </div>
   )
 
