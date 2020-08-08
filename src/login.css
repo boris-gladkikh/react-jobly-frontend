@@ -6,23 +6,12 @@ body {
   margin-bottom: 10px;
 }
 
-.registerform {
-  border: 1px solid black;
-  width: 25%;
-  padding: 10px;
+.form-container {
+  border: 2px solid white;
   margin: auto;
-  background-color: #2E86C1;
   color: white;
+  width: 50%;
 
 }
 
-
-
-
-
-
-
-.ccLogoBigger{
-  width: 25%;
-}
 

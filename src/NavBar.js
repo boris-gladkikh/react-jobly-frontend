@@ -28,10 +28,10 @@ function NavBar({ currentUser, setCurrentUser }) {
     return (
       <Navbar bg="dark" variant="dark" className="justify-content-end">
         <Nav className="text-white nav-font">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/companies">Companies</Nav.Link>
-        <Nav.Link href="/jobs">Jobs</Nav.Link>
-        <Nav.Link href="/profile">Profile</Nav.Link>
+        <Nav.Link href="/">HOME</Nav.Link>
+        <Nav.Link href="/companies">COMPANIES</Nav.Link>
+        <Nav.Link href="/jobs">JOBS</Nav.Link>
+        <Nav.Link href="/profile">PROFILE</Nav.Link>
         <Nav.Link href="/login" onClick={handleLogout} >Log Out</Nav.Link>
         </Nav>
       </Navbar>

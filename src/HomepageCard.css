@@ -6,3 +6,7 @@
 i .cardie:hover{
   color:white;
 }
+
+.cardie {
+  padding: 10px;
+}

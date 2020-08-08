@@ -1,7 +1,6 @@
 import React from 'react';
 import "./login.css";
 import LoginSignupForm from "./LoginSignupForm";
-import logo from "./catlogo.png"
 
 function LoginPage() {
   return (
@@ -11,6 +10,7 @@ function LoginPage() {
         <h1 className="primary-font"> Log in/Register</h1>
         <h3 className="text-white secondary-font"> Start your job search now.</h3>
         </div>
+
       <LoginSignupForm />
 
       <div className="mt-5">
