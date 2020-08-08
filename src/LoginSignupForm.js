@@ -6,6 +6,7 @@ import Alert from './Alert';
 import "./login.css";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner'
 
 // parent of alert, child of homepage,routes
 //renders forms, sends request, receives token or error based on response,
@@ -21,14 +22,11 @@ function LoginSignupForm() {
     email: ''
   }
   const [formToggle, setFormToggle] = useState(false);
-  //spread initial data insise formData state, so there's no way for anyone to edit OG reference!!!
   const [formData, setFormData] = useState({ ...initialData });
   const [logginIn, setlogginIn] = useState(false);
   const [signingUp, setsigningUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
   const { setToken } = useContext(TokenContext);
-
-
 
   /*invokes our login/register requests (depending on which form is submitted)
     then resets our submit click states, and hides error messages if exposed
@@ -129,6 +127,12 @@ function LoginSignupForm() {
   function formSwitch() {
     setFormToggle(!formToggle);
 
+  }
+
+  if(logginIn || signingUp){
+    return (
+      <Spinner animation="border" size="xl" className="mt-5" />
+    )
   }
 
   if (formToggle) {

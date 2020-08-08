@@ -24,7 +24,7 @@ function NavBar({ currentUser, setCurrentUser }) {
   }
   //authenticates which navbar to render based on token state 
 
-  if (currentUser.username) {
+  if (token) {
     return (
       <Navbar bg="dark" variant="dark" className="justify-content-end">
         <Nav className="text-white nav-font">
