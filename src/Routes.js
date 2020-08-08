@@ -9,6 +9,7 @@ import NavBar from "./NavBar";
 import TokenContext from "./TokenContext";
 import JoblyApi from "./HelperApi";
 import LoginPage  from "./LoginPage";
+import Footer from './Footer';
 
 
 
@@ -65,6 +66,7 @@ function Routes() {
         </Route></>)}
         <Redirect to="/" />
       </Switch>
+      <Footer />
       </TokenContext.Provider>
     </>
   );

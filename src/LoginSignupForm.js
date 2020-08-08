@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import TokenContext from "./TokenContext";
 import Alert from './Alert';
 import "./login.css";
-import {Form, Label,Input, Button} from "reactstrap";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 // parent component of alert, child component of homepage,routes
 //renders forms, sends request, receives token or error based on response,
@@ -140,19 +141,20 @@ function LoginSignupForm() {
     setHideSignup("Hidden");
   }
 
+  //login form first, signup form second. 
   return (
     <div>
-
+      
       <Button color="primary" onClick={handleLoginButton}>Login</Button>
       <Button onClick={handleRegisterButton}>Register</Button>
-      <Form className={`"loginForm" registerform ${hideLogin}`} onSubmit={handleSubmitLogin}>
+      {/* <Form className={`"loginForm" registerform ${hideLogin}`} onSubmit={handleSubmitLogin}>
         <Label htmlFor="username"></Label>
         <Input  placeholder="Username" onChange={handleChange} value={formData.username} name="username"></Input><br />
         <Label htmlFor="password" ></Label>
         <Input  type="password"  placeholder="Password" onChange={handleChange} value={formData.password} name="password"></Input><br />
         <button className="registerButton" type="submit">Submit</button>
         <div ><Alert errors={errorMessage} /></div>
-      </Form>
+      </Form> */}
 
       <form className={`"signUpForm" registerform ${hideSignup}`} onSubmit={handleSubmitSignUp}>
         <label htmlFor="first_name"></label>

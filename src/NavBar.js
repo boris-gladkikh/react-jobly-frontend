@@ -3,7 +3,9 @@ import { NavLink, Link } from 'react-router-dom';
 import "./NavBar.css";
 import TokenContext from "./TokenContext";
 import { useHistory } from "react-router-dom";
-import logo from "./catlogo.png";
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+
 
 
 //renders navbar on every page, depending on logged in status of user
@@ -24,26 +26,24 @@ function NavBar({ currentUser, setCurrentUser }) {
 
   if (currentUser.username) {
     return (
-      <nav>
-        <Link exact to="/"><img className="cclogo" src={logo} alt="cclogo"></img></Link>
-        <ul>
-          <li ><NavLink exact to="/">Home</NavLink></li>
-          <li><NavLink exact to="/companies">Companies</NavLink></li>
-          <li><NavLink exact to="/jobs">Jobs</NavLink></li>
-          <li><NavLink exact to="/profile">Profile</NavLink></li>
-          <li><NavLink exact to="/login" onClick={handleLogout} >Log Out</NavLink></li>
-        </ul>
-      </nav>
+      <Navbar bg="dark" variant="dark" className="justify-content-end">
+        <Nav className="text-white nav-font">
+        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="/companies">Companies</Nav.Link>
+        <Nav.Link href="/jobs">Jobs</Nav.Link>
+        <Nav.Link href="/profile">Profile</Nav.Link>
+        <Nav.Link href="/login" onClick={handleLogout} >Log Out</Nav.Link>
+        </Nav>
+      </Navbar>
     )
   } else {
     return (
-      <nav>
-        <Link exact to="/"><img className="cclogo" src={logo} alt="cclogo"></img></Link>
-        <ul>
-          <li><NavLink exact to="/">Home</NavLink></li>
-          <li><NavLink exact to="/login">Log In</NavLink></li>
-        </ul>
-      </nav>
+      <Navbar variant="dark" className="justify-content-end">
+        <Nav className="nav-font">
+        <Nav.Link href="/">HOME</Nav.Link>
+        <Nav.Link href="/login">LOGIN</Nav.Link>
+        </Nav>
+      </Navbar>
     )
   }
 

@@ -1,18 +1,44 @@
-body {
-margin: 0px;  
-text-align: center;
-background-color: white;
-font-size: medium;
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-button {
-  border-radius: 5px;
-  padding: 5px;
-  font-size: large;
+.app {
+  min-height: 100vh;
+  background-color: #FE8484;
+
 }
 
-input {
-  font-size:medium;
-  margin:5px;
+.bg-color {
+  background-color: #FE8484;
 }
+
+i {
+  color: #7D7D7D;
+}
+
+.current {
+  border: 2px solid greenyellow;
+}
+
+.card-font {
+
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.nav-font {
+
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.primary-font {
+  font-family: 'Poppins', sans-serif;
+}
+
+.secondary-font {
+  font-family: 'Ubuntu', sans-serif;
+  
+}
+
 

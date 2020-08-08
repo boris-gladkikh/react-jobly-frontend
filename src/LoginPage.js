@@ -5,7 +5,7 @@ import logo from "./catlogo.png"
 
 function LoginPage() {
   return (
-    <div>
+    <div className="app">
       <img className="ccLogoBigger" src={logo} alt="cc logo"></img>
       {/* <h2>Log In/Sign Up</h2> */}
 
