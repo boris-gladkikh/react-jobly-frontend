@@ -1,0 +1,8 @@
+.cardie:hover {
+  color: white;
+}
+
+.cardie i:hover,
+i .cardie:hover{
+  color:white;
+}
