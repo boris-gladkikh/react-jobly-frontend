@@ -3,6 +3,7 @@ import JoblyApi from "./HelperApi";
 import SearchBar from "./SearchBar";
 import JobCard from "./JobCard";
 import "./JobList.css";
+import LoadingSpinner from './LoadingSpinner';
 
 /**JobList: Component that renders list of JobCards */
 function JobList({ currentUser }) {
@@ -32,14 +33,7 @@ function JobList({ currentUser }) {
   //if jobs is a promise return loading
   // else if it resolves to an array as expected render list of JobCards
   if (isLoading) {
-    return (
-      <div>
-        <h1>
-          Loading...
-       </h1>
-      </div>
-    )
-
+    return <LoadingSpinner />
   } else {
 
     return (

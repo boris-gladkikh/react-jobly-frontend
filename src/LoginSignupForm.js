@@ -23,6 +23,7 @@ function LoginSignupForm() {
   }
   const [formToggle, setFormToggle] = useState(false);
   const [formData, setFormData] = useState({ ...initialData });
+  const [loading, setLoading] = useState(false);
   const [logginIn, setlogginIn] = useState(false);
   const [signingUp, setsigningUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
@@ -52,6 +53,10 @@ function LoginSignupForm() {
         // alert("Something went wrong. with login");
         console.error(err);
       }
+      finally{
+        setLoading(false);
+
+      }
     }
 
     async function signUp() {
@@ -69,6 +74,10 @@ function LoginSignupForm() {
         ]));
         // alert('Something went wrong with signup!');
         console.error(err);
+      }
+      finally{
+        setLoading(false);
+
       }
 
     }
@@ -97,6 +106,7 @@ function LoginSignupForm() {
 
   function handleSubmitSignUp(evt) {
     evt.preventDefault();
+    setLoading(true);
     setsigningUp(true);
     //checks localStorage to make sure it does what we want
     console.log("signup", localStorage);
@@ -106,6 +116,7 @@ function LoginSignupForm() {
 
   function handleSubmitLogin(evt) {
     evt.preventDefault();
+    setLoading(true);
     setlogginIn(true);
     //checks localStorage to make sure it does what we want
     console.log("login", localStorage);
@@ -129,9 +140,11 @@ function LoginSignupForm() {
 
   }
 
-  if(logginIn || signingUp){
+  if(loading){
     return (
-      <Spinner animation="border" size="xl" className="mt-5" />
+      <div className="app mt-5">
+        <Spinner animation="border" size="xl" className="mt-5" />
+      </div>
     )
   }
 

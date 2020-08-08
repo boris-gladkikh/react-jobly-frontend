@@ -17,10 +17,10 @@ function NavBar({ currentUser, setCurrentUser }) {
   //back to homepage via history
   function handleLogout() {
     window.localStorage.clear();
-    setToken(undefined);
+    setToken(localStorage.getItem("token"));
     setCurrentUser({});
     console.log("localStorage is:", localStorage);
-    history.push('/');
+    history.push('/login');
   }
   //authenticates which navbar to render based on token state 
 
@@ -32,7 +32,7 @@ function NavBar({ currentUser, setCurrentUser }) {
         <Nav.Link href="/companies">COMPANIES</Nav.Link>
         <Nav.Link href="/jobs">JOBS</Nav.Link>
         <Nav.Link href="/profile">PROFILE</Nav.Link>
-        <Nav.Link href="/login" onClick={handleLogout} >Log Out</Nav.Link>
+        <Nav.Link href="/login" onClick={handleLogout} >LOG OUT</Nav.Link>
         </Nav>
       </Navbar>
     )

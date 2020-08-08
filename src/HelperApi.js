@@ -8,7 +8,6 @@ class JoblyApi {
     let currentToken = localStorage.getItem("token");
     paramsOrData._token = currentToken;
 
-
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
     try {

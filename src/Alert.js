@@ -11,7 +11,7 @@ function Alert({errors}){
   return (
 
     errors.map((err,i) => (
-      <div key={i}>{err}</div>
+      <div key={i}><h4 className="text-dark primary-font">{err}</h4></div>
     ))
    
   );

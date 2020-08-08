@@ -54,7 +54,7 @@ function Profile({ currentUser }) {
              hexagon live-edge four loko portland organic brooklyn. </p>
           </div>
           <div className="rightContainer">
-            <AppliedJobs userJobs={userJobs} />
+            {/* <AppliedJobs userJobs={userJobs} /> */}
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import "./AppliedJobs.css";
+
 function AppliedJobs({ userJobs }) {
 
   let jobsApplied =

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from "./HelperApi";
 import SearchBar from "./SearchBar";
 import CompanyCard from "./CompanyCard";
+import Spinner from 'react-bootstrap/Spinner';
 import "./CompanyList.css";
 
 /**CompanyList: Component that renders list of CompanyCards */
@@ -34,10 +35,10 @@ function CompanyList({ currentUser }) {
   //change to state
   if (isLoading) {
     return (
-      <div>
-        Loading...
+      <div className="app mt-5">
+        <Spinner animation="border" size="xl" className="mt-5" />
       </div>
-    );
+    )
   } else {
     return (
       <div>
