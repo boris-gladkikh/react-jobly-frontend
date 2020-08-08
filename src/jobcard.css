@@ -1,53 +1,17 @@
-.jobcard {
-  padding:5px;
-  text-align: left;
+.job-card{
   display: flex;
-  border: 1px solid black;
-  width: 30%;
+  width: 275px;
+  height: 350px;
   margin: auto;
   margin-bottom: 10px;
+  background-color: white;
   margin-top: 5px;
-  background-color: rgb(99, 106, 110);
-  color: white;
-  box-shadow: 2px 5px grey;
-  justify-content: space-between;
-
+  border: 1px solid black;
+  color: black;
+  /* flex-wrap: wrap; */
+  box-shadow: 2px 2px grey;
+  flex-direction: column;
 }
 
-.jobcard:hover {
-  background-color: #2E86C1;
-}
 
-.applybutton {
-  color:white;
-  padding: 10px;
-  background-color: tomato;
-}
 
-.jobLogo {
-  margin-top: 25px;
-  margin-left: 10px;
-  width: 100px;
-  border-radius: 100%;
-}
-
-.buttonDiv {
-  top: 5px;
-}
-
-.jobCardText{
-  margin: 0px;
-}
-
-.jobCardButton{
-  margin-top: 50px;
-
-}
-
-.appliedButton {
-  background-color: lightskyblue;
-}
-.appliedButton:hover {
-  background-color: lightskyblue;
-
-}

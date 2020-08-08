@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from "./HelperApi";
 import SearchBar from "./SearchBar";
 import CompanyCard from "./CompanyCard";
-import Spinner from 'react-bootstrap/Spinner';
 import "./CompanyList.css";
+import LoadingSpinner from './LoadingSpinner';
+
 
 /**CompanyList: Component that renders list of CompanyCards */
 function CompanyList({ currentUser }) {
@@ -34,12 +35,9 @@ function CompanyList({ currentUser }) {
 
   //change to state
   if (isLoading) {
-    return (
-      <div className="app mt-5">
-        <Spinner animation="border" size="xl" className="mt-5" />
-      </div>
-    )
+    return <LoadingSpinner />
   } else {
+    
     return (
       <div>
         <h1>These companies are hiring!</h1>
