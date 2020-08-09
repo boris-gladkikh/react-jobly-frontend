@@ -4,6 +4,9 @@ import SearchBar from "./SearchBar";
 import CompanyCard from "./CompanyCard";
 import "./CompanyList.css";
 import LoadingSpinner from './LoadingSpinner';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 
 /**CompanyList: Component that renders list of CompanyCards */
@@ -39,23 +42,26 @@ function CompanyList({ currentUser }) {
   } else {
     
     return (
-      <div>
-        <h1>These companies are hiring!</h1>
-        <p>
-          Our company list is growing every day. See the most in-demand
-          jobs at the hottest companies!
-        </p>
-        <div className="companycontainer">
-          <SearchBar whichSearch='companies' searchCompanies={companyListSearch} />
+      <div className="mx-3 app">
+       <div className="mt-5 px-2">
+          <h1 className="primary-font">These companies are hiring.</h1>
+          <h4 className="text-white secondary-font">See the most in-demand jobs at the hottest companies.</h4>
+        </div>
+        <Container className="mt-5">
+          <Row>
           {companies.map(({ name, logo_url, description, handle }) =>
+            <Col sm="12" md="6" lg="3">
             <CompanyCard
               key={handle}
               handle={handle}
               name={name}
               logoUrl={logo_url}
               description={description}
-            />)}
-        </div>
+            /></Col>)}
+          </Row>
+        </Container>
+          {/* <SearchBar whichSearch='companies' searchCompanies={companyListSearch} /> */}
+         
 
       </div>
     )
@@ -65,11 +71,3 @@ function CompanyList({ currentUser }) {
 export default CompanyList
 
 
-
-//search bar on top 
-
-//list of companies (get all companies api)
-
-//map to get company card for each company
-
-//- company card  props = company

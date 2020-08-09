@@ -4,10 +4,13 @@ import SearchBar from "./SearchBar";
 import JobCard from "./JobCard";
 import "./JobList.css";
 import LoadingSpinner from './LoadingSpinner';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 /**JobList: Component that renders list of JobCards */
 function JobList({ currentUser }) {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   // Inital request to get all jobs
@@ -22,7 +25,9 @@ function JobList({ currentUser }) {
         setIsLoading(false);
       }
     }
-    getJobs();
+    if(!jobs){
+      getJobs();
+    }
   }, [setJobs]);
 
   //runs on search bar if search bar is used, passed to search bar component in props
@@ -37,14 +42,18 @@ function JobList({ currentUser }) {
   } else {
 
     return (
-      <div>
-        <h1>These jobs are available!</h1>
-        <h3>Click on the apply button to automatically apply.</h3>
-        <p> You can find a list of all jobs applied to on your profile page.</p>
-        <SearchBar whichSearch='jobs' searchJobs={jobListSearch} />
-        <div>
+      <div className="mx-3 app">
+        <div className="mt-5 px-2">
+          <h1 className="primary-font">These jobs are available.</h1>
+          <h4 className="text-white secondary-font">Easily apply to any position with a single click.</h4>
+          <p className="primary-font">You can find a list of all jobs applied to on your profile page.</p>
+        </div>
+        {/* <SearchBar whichSearch='jobs' searchJobs={jobListSearch} /> */}
+        <Container className="mt-5">
+          <Row>
           {jobs.map(({ title, salary, equity, id, company_handle }) =>
-            <JobCard
+           <Col sm="12" md="6" lg="3">
+           <JobCard
               jobList={currentUser.jobs}
               key={id}
               jobId={id}
@@ -53,8 +62,10 @@ function JobList({ currentUser }) {
               equity={equity}
               company={company_handle}
               username={currentUser.username}
-            />)}
-        </div>
+            /></Col> )}
+          </Row>
+        </Container>
+          
 
       </div>
     );

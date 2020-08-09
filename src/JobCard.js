@@ -3,6 +3,7 @@ import "./jobcard.css";
 import JoblyApi from './HelperApi';
 import companyLogo from './img/company-rectangle.png';
 import Button from 'react-bootstrap/Button';
+import LoadingSpinner from './LoadingSpinner';
 // import { Link } from "react-router-dom";
 
 //jobCard: Child component to JobList - renders job info
@@ -12,6 +13,7 @@ function JobCard({ jobId, title, salary, equity, company, username, jobList }) {
 
 
   //TODO: apply to job via backend server, unapply from job. write these in ROUTES, pass down
+  //do i need useEffect for this function below?
 
   async function applyForJob() {
     let data = {
@@ -29,7 +31,6 @@ function JobCard({ jobId, title, salary, equity, company, username, jobList }) {
     finally {
       setIsLoading(false);
     }
-
   }
 
   function handleApply(evt) {
@@ -37,7 +38,7 @@ function JobCard({ jobId, title, salary, equity, company, username, jobList }) {
     setIsLoading(true);
     applyForJob();
   }
-
+  //TODO: this is cause of memory leak, i think!!!!
   let jobIdArray = jobList.map(j => j.id);
 
   //add to check if you already applied to this job prior by looking at currentUser jobs (pass thru props)
@@ -45,7 +46,9 @@ function JobCard({ jobId, title, salary, equity, company, username, jobList }) {
     <Button variant="success" className="">Applied</Button> :
     <Button variant="dark" onClick={handleApply}>Apply Now</Button>
 
-
+  if(isLoading){
+    return <LoadingSpinner />
+  }
 
   return (
     <div className="job-card">
