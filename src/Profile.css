@@ -1,39 +1,5 @@
-
-.flexContain {
-  display: flex;
-  margin: auto;
-  flex-direction: row;
-  justify-content: space-evenly;
-  border: 1px solid black;
-  width: 60%;
-  box-shadow: 2px 5px lightgrey;
-  
-} 
-
-.profilepic{
-  margin-top: 20px;
-  width: 200px;
+.profilepic {
+  width: 40%;
+  height: auto;
+  border-radius: 100%;
 }
-
-
-
-/* .flexContainer {
-  display: flex;
-} */
-
-/* .profilepage{
-  display: flex;
-  justify-content: center;
-} */
- .leftContainer {
-  text-align: left;
-  width: 400px;
-
-}
-
- .rightContainer {
-  /* border: 1px solid black; */
-  padding: 10px;
-  text-align: right;
-  border-left: 1px solid black;
-}   

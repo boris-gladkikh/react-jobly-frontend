@@ -49,7 +49,7 @@ function CompanyList({ currentUser }) {
         <Container className="mt-5">
           <Row>
           {companies.map(({ name, logo_url, description, handle }) =>
-            <Col sm="12" md="6" lg="3">
+            <Col sm="12" md="6" lg="4" xl="3">
             <CompanyCard
               key={handle}
               handle={handle}

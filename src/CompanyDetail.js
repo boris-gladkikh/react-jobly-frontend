@@ -39,9 +39,10 @@ function CompanyDetail({ currentUser }) {
     <div>
         <Row>
           <Col className="bg-white" lg="4" md="12">
+
             <h1 className="primary-font mt-5">{company.name}</h1>
-            <img className="company-logo mt-5" src={companyLogo} alt="company logo" />
-            <h5 className="secondary-font mt-5">{company.description}</h5>
+            <img className="company-logo px-3 mt-5" src={companyLogo} alt="company logo" />
+            <h5 className="secondary-font px-3 mt-5">{company.description}</h5>
           </Col>
           <Col style={{minHeight:"100vh"}} lg="8" md="12">
             <div className="mx-3">

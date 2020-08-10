@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import JoblyApi from "./HelperApi";
 import ProfileForm from "./ProfileForm";
 import AppliedJobs from "./AppliedJobs";
-import "./Profile.css";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import './Profile.css';
 
 //Parent component of Jobs applied and Profile Form -
 //shows basic information on currentUser, with applied jobs component and edit form component
@@ -22,7 +25,7 @@ function Profile({ currentUser }) {
   }
 
   function handleUnapply() {
-    //nothingf yet
+    //nothing yet
   }
 
 
@@ -32,51 +35,47 @@ function Profile({ currentUser }) {
 
   console.log("these are user's jobs in profileForm \n\n", userJobs);
 
-  if (showForm === false) {
+  if (!showForm) {
     return (
       <div>
-        <h2>{`Welcome Back, ${currentUser.first_name}!`}</h2>
-        <h4>Here you can find your profile details and jobs you have applied to.</h4>
-        <p>Click the button next to each job to unapply!</p>
-
-        <div className="flexContain">
-          <div className="leftContainer">
-            <img className="profilepic" src={photo_url} alt=" img of user"></img>
-            <h3>Personal Information</h3>
-            <p><b>Name:</b>{`${first_name} ${last_name}`}</p>
-            <p><b>Email:</b>{email} </p>
-            <p><b>Bio:</b>Vaporware franzen craft beer, mixtape disrupt narwhal 
+        <Row>
+          <Col className="bg-white" lg="4" md="12">
+            <img className="profilepic px-3 mt-5" src={photo_url} alt=" img of user"></img>
+            <div className="text-left px-3 primary-font mb-5">
+              <p><b>Name:</b><br />{`${first_name} ${last_name}`}</p>
+              <p><b>Email:</b><br />{email} </p>
+              <p><b>Bio:</b><br />Vaporware franzen craft beer, mixtape disrupt narwhal
             locavore offal drinking vinegar sustainable polaroid. Lumbersexual lyft truffaut
-             williamsburg fixie craft beer brooklyn synth hoodie. Edison bulb YOLO DIY whatever 
-             subway tile migas knausgaard actually readymade gentrify waistcoat viral typewriter 
-             tousled umami. Offal single-origin coffee taiyaki shaman, brunch af blue bottle wayfarers 
-             cle salvia man bun sustainable trust fund. Skateboard leggings celiac, cronut seitan wolf 
+             williamsburg fixie craft beer brooklyn synth hoodie. Edison bulb YOLO DIY whatever
+             subway tile migas knausgaard actually readymade gentrify waistcoat viral typewriter
+             tousled umami. Offal single-origin coffee taiyaki shaman, brunch af blue bottle wayfarers
+             cle salvia man bun sustainable trust fund. Skateboard leggings celiac, cronut seitan wolf
              hexagon live-edge four loko portland organic brooklyn. </p>
-          </div>
-          <div className="rightContainer">
-            {/* <AppliedJobs userJobs={userJobs} /> */}
-          </div>
-        </div>
+            </div>
+            <Button variant="dark" onClick={toggleFormButton}>Edit Info</Button>
+          </Col>
 
-        <button onClick={toggleFormButton}>Edit Info</button>
-
-
-
+          <Col style={{ minHeight: "100vh" }} lg="8" md="12">
+            <div className="mx-3">
+              <h2 className="text-white primary-font mt-5" >Here are your applied jobs.</h2>
+              <h5 className="secondary-font">Unapply with a single click.</h5>
+            </div>
+            <div className="mt-5">
+              {/* <AppliedJobs userJobs={userJobs} /> */}
+            </div>
+          </Col>
+        </Row>
 
       </div>
     )
 
-  } else {
-    return (
-      <div>
-        <ProfileForm currentUser={currentUser} />
-        <button onClick={toggleFormButton}>Cancel</button>
-      </div>
-    )
   }
-
-
-
+  return (
+    <div className="app">
+      <ProfileForm currentUser={currentUser} />
+      <button onClick={toggleFormButton}>Cancel</button>
+    </div>
+  )
 
 }
 
