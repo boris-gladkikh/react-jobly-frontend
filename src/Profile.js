@@ -19,7 +19,6 @@ function Profile({ currentUser }) {
   const [showForm, setShowForm] = useState(false);
 
   const userJobs = currentUser.jobs;
-  console.log("these are current user's jobs:", userJobs)
 
 
   function toggleFormButton() {
@@ -31,11 +30,6 @@ function Profile({ currentUser }) {
   }
 
 
-  //renders list of jobs if currentUser has any - otherwise returns 'no jobs'
-
-
-
-  console.log("these are user's jobs in profileForm \n\n", userJobs);
 
   if (!showForm) {
     return (
@@ -67,7 +61,7 @@ function Profile({ currentUser }) {
               <h5 className="secondary-font">Unapply with a single click.</h5>
             </div>
             <div className="mt-5">
-              {/* <AppliedJobs userJobs={userJobs} /> */}
+              <AppliedJobs unapply={handleUnapply} userJobs={userJobs} />
             </div>
           </Col>
         </Row>

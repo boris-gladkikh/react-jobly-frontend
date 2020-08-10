@@ -1,17 +1,35 @@
 import React from 'react';
 import "./AppliedJobs.css";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import JobCardSimple from './JobCardSimple';
 
-function AppliedJobs({ userJobs }) {
 
-  let jobsApplied =
-    userJobs.map(job => <p>{job.title} <button className="smallDeleteButton" >X</button></p>)
+function AppliedJobs({ userJobs, unapply }) {
+
+
+let jobStatus = !(userJobs) ? 
+<h2 className="secondary-font">"No jobs yet - Start applying today."</h2> :
+<Row className="">
+      {userJobs.map(job => (
+        <Col xl="4" lg="6" sm="12">
+          <JobCardSimple
+            jobId={job.id}
+            key={job.id}
+            title={job.title}
+            company={job.company_handle}
+            unapply={unapply} />
+        </Col>
+      ))}  
+      </Row>
+
+
 
 
   return (
-    <div >
-      <h1 className="primary-font text-white"> Applied Jobs</h1>
-      {jobsApplied.length === 0 ? "No Jobs yet" : jobsApplied}
-
+    <div className="app" >
+      {jobStatus}
+      
     </div>
   )
 }
