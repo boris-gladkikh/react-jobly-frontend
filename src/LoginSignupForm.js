@@ -6,7 +6,7 @@ import Alert from './Alert';
 import "./login.css";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Spinner from 'react-bootstrap/Spinner'
+import LoadingSpinner from './LoadingSpinner';
 
 // parent of alert, child of homepage,routes
 //renders forms, sends request, receives token or error based on response,
@@ -141,11 +141,7 @@ function LoginSignupForm() {
   }
 
   if(loading){
-    return (
-      <div className="app mt-5">
-        <Spinner animation="border" size="xl" className="mt-5" />
-      </div>
-    )
+    return <LoadingSpinner />
   }
 
   if (formToggle) {

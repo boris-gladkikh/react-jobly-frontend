@@ -9,7 +9,7 @@ function AppliedJobs({ userJobs, unapply }) {
 
 
 let jobStatus = !(userJobs) ? 
-<h2 className="secondary-font">"No jobs yet - Start applying today."</h2> :
+<h4 className="secondary-font">"No jobs yet - Start applying today."</h4> :
 <Row className="">
       {userJobs.map(job => (
         <Col xl="4" lg="6" sm="12">

@@ -10,8 +10,6 @@ import './Profile.css';
 //Parent component of Jobs applied and Profile Form -
 //shows basic information on currentUser, with applied jobs component and edit form component
 
-//TODO line 79 button - make inside profile form component. pass down toggle function. 
-
 function Profile({ currentUser }) {
   let { first_name, last_name, email, photo_url, username } = currentUser
 
@@ -19,7 +17,6 @@ function Profile({ currentUser }) {
   const [showForm, setShowForm] = useState(false);
 
   const userJobs = currentUser.jobs;
-
 
   function toggleFormButton() {
     setShowForm(!showForm);
