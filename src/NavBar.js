@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import "./NavBar.css";
 import TokenContext from "./TokenContext";
 import { useHistory } from "react-router-dom";

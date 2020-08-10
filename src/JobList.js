@@ -52,7 +52,7 @@ function JobList({ currentUser }) {
         <Container className="mt-5">
           <Row>
           {jobs.map(({ title, salary, equity, id, company_handle }) =>
-           <Col sm="12" md="6" lg="3">
+           <Col key={id} sm="12" md="6" lg="3">
            <JobCard
               jobList={currentUser.jobs}
               key={id}

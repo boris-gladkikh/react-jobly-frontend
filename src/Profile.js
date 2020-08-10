@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import JoblyApi from "./HelperApi";
 import ProfileForm from "./ProfileForm";
 import AppliedJobs from "./AppliedJobs";
 import Row from 'react-bootstrap/Row';
@@ -21,12 +20,6 @@ function Profile({ currentUser }) {
   function toggleFormButton() {
     setShowForm(!showForm);
   }
-
-  function handleUnapply() {
-    //nothing yet
-  }
-
-
 
   if (!showForm) {
     return (
@@ -55,10 +48,10 @@ function Profile({ currentUser }) {
           <Col style={{ minHeight: "100vh" }} lg="8" md="12">
             <div className="mx-3">
               <h2 className="text-white primary-font mt-5" >Here are your applied jobs.</h2>
-              <h5 className="secondary-font">Unapply with a single click.</h5>
+              <h5 className="secondary-font">Most employers typically respond in 7-10 days.</h5>
             </div>
             <div className="mt-5">
-              <AppliedJobs unapply={handleUnapply} userJobs={userJobs} />
+              <AppliedJobs userJobs={userJobs} />
             </div>
           </Col>
         </Row>
