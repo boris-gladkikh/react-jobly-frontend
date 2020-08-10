@@ -37,7 +37,6 @@ function ProfileForm({ currentUser, toggleFormButton }) {
   useEffect(function update() {
     async function patchFormData(username, data) {
       try {
-        setIsLoading(true);
         let response = await JoblyApi.updateProfile(username, data)
         setFormData({ ...response })
       }
@@ -51,7 +50,7 @@ function ProfileForm({ currentUser, toggleFormButton }) {
         setIsLoading(false);
       }
     }
-    if (isUpdating === true) {
+    if (isUpdating) {
       patchFormData(username, formData)
       setIsUpdating(false);
     }
@@ -61,7 +60,8 @@ function ProfileForm({ currentUser, toggleFormButton }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    setIsUpdating(true)
+    setIsLoading(true);
+    setIsUpdating(true);
     // setFormData({...INITIAL_DATA})
   }
 
@@ -76,7 +76,7 @@ function ProfileForm({ currentUser, toggleFormButton }) {
     ));
   }
 
-  if (isLoading === true) {
+  if (isLoading) {
     return <LoadingSpinner />
   }
 
@@ -124,7 +124,7 @@ function ProfileForm({ currentUser, toggleFormButton }) {
           <Button variant="dark" type="submit">Submit</Button>
           <Button variant="dark" className="ml-2" onClick={toggleFormButton}>Cancel</Button>
 
-          <div className="" ><Alert errors={errorMessage} /></div>
+          <div className="mt-5" ><Alert errors={errorMessage} /></div>
         </Form>
       </div>
     </>

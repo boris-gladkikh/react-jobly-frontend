@@ -211,7 +211,7 @@ function LoginSignupForm() {
           <Form.Control type="password" placeholder="Password" onChange={handleChange} value={formData.password} name="password"></Form.Control>
         </Form.Group>
         <Button variant="dark" className="" type="submit">Submit</Button>
-        <div ><Alert errors={errorMessage} /></div>
+        <div className="mt-5"><Alert errors={errorMessage} /></div>
       </Form>
       </div>
 
