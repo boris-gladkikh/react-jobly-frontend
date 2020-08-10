@@ -4,6 +4,7 @@ import AppliedJobs from "./AppliedJobs";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import LoadingSpinner from './LoadingSpinner';
 import './Profile.css';
 
 //Parent component of Jobs applied and Profile Form -
@@ -21,7 +22,12 @@ function Profile({ currentUser }) {
     setShowForm(!showForm);
   }
 
+  if(!currentUser){
+    return <LoadingSpinner />
+  }
+
   if (!showForm) {
+    console.log("this is currentUser in profile upon registering", currentUser);
     return (
       <div>
         <Row>

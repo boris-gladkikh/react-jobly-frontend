@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import LoadingSpinner from './LoadingSpinner';
 
 //jobCard: Child component to JobList - renders job info
-function JobCard({ jobId, title, salary, equity, company, username, jobList }) {
+function JobCard({ jobId, title, salary, equity, company, username, isApplied }) {
   const [Applied, setApplied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isApplying, setIsApplying] = useState(false);
@@ -49,12 +49,10 @@ function JobCard({ jobId, title, salary, equity, company, username, jobList }) {
   }
 
 
-  //TODO: this is cause of memory leak, i think!!!!
-    let jobIdArray = jobList.map(j => j.id);
   
 
   //add to check if you already applied to this job prior by looking at currentUser jobs (pass thru props)
-  let applyButtonConditional = (jobIdArray.includes(jobId) || Applied === true) ?
+  let applyButtonConditional = (isApplied || Applied === true) ?
     <Button variant="success">Applied</Button> :
     <Button variant="dark" onClick={handleApply}>Apply Now</Button>
 

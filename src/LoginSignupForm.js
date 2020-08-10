@@ -42,8 +42,7 @@ function LoginSignupForm() {
       try {
         let response = await JoblyApi.login(formData);
         window.localStorage.setItem('token', response);
-        window.localStorage.setItem('username', formData.username);
-        setToken(response);
+        setToken(response)
         history.push("/companies");
       }
       catch (err) {
@@ -77,7 +76,6 @@ function LoginSignupForm() {
       }
       finally{
         setLoading(false);
-
       }
 
     }

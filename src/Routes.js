@@ -17,7 +17,7 @@ import Footer from './Footer';
 //Switch handles our routes, Nav bar shows up on each page
 function Routes() {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({jobs: []});
 
   //get the current user
   useEffect(function getUser() {
@@ -36,10 +36,6 @@ function Routes() {
   }, [token]);
 
 
-
-
-
-
 //pass states as provider, use context when login form updates
   return (
     <>
@@ -50,7 +46,7 @@ function Routes() {
           <Homepage />
         </Route>
         <Route exact path="/login">
-          <LoginPage  />
+          <LoginPage/>
         </Route>
         {!!token && (<><Route exact path="/companies">
           <CompanyList currentUser={currentUser}/>

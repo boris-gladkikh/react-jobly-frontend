@@ -19,16 +19,26 @@ function JobList({ currentUser }) {
       try {
         let resp = await JoblyApi.getAllJobs()
         setJobs(resp);
+
+
       } catch (err) {
         console.error(err);
       } finally {
         setIsLoading(false);
       }
     }
-    if(!jobs){
+    if (!jobs) {
       getJobs();
     }
   }, [setJobs]);
+
+  /* 
+  TODO: THIS IS THE NO OP MEMORY LEAK BUG!!! HOW TO FIX THIS?
+  trying to propogate job id array to check if a jobCard's id is included, to pass down to jobcard
+  to see if job is applied for already or not.
+   */
+
+
 
   //runs on search bar if search bar is used, passed to search bar component in props
   function jobListSearch(filteredJobs) {
@@ -41,6 +51,11 @@ function JobList({ currentUser }) {
     return <LoadingSpinner />
   } else {
 
+    console.log("this is currentUSer prior to set", currentUser)
+    let appliedJobsSet = new Set(currentUser.jobs.map(job => job.id));
+
+
+
     return (
       <div className="mx-3 app">
         <div className="mt-5 px-2">
@@ -51,18 +66,19 @@ function JobList({ currentUser }) {
         {/* <SearchBar whichSearch='jobs' searchJobs={jobListSearch} /> */}
         <Container className="mt-5">
           <Row>
-          {jobs.map(({ title, salary, equity, id, company_handle }) =>
-           <Col key={id} sm="12" md="6" lg="3">
-           <JobCard
-              jobList={currentUser.jobs}
-              key={id}
-              jobId={id}
-              title={title}
-              salary={salary}
-              equity={equity}
-              company={company_handle}
-              username={currentUser.username}
-            /></Col> )}
+            {jobs.map(({ title, salary, equity, id, company_handle }) =>
+              <Col key={id} sm="12" md="6" lg="3">
+                <JobCard
+                  isApplied={appliedJobsSet.has(id)}
+
+                  key={id}
+                  jobId={id}
+                  title={title}
+                  salary={salary}
+                  equity={equity}
+                  company={company_handle}
+                  username={currentUser.username}
+                /></Col>)}
           </Row>
         </Container>
       </div>
