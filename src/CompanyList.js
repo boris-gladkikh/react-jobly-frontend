@@ -39,8 +39,7 @@ function CompanyList({ currentUser }) {
   //change to state
   if (isLoading) {
     return <LoadingSpinner />
-  } else {
-    
+  } 
     return (
       <div className="mx-3 app">
        <div className="mt-5 px-2">
@@ -65,7 +64,6 @@ function CompanyList({ currentUser }) {
 
       </div>
     )
-  }
 }
 
 export default CompanyList

@@ -65,8 +65,6 @@ function JobList({ currentUser }) {
             /></Col> )}
           </Row>
         </Container>
-          
-
       </div>
     );
   }

@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import JoblyApi from "./HelperApi";
 import { useParams } from "react-router-dom";
 import JobCard from './JobCard';
+import LoadingSpinner from './LoadingSpinner';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import companyLogo from './img/company-rectangle.png';
+
 
 function CompanyDetail({ currentUser }) {
   const [company, setCompany] = useState({});
@@ -26,36 +32,42 @@ function CompanyDetail({ currentUser }) {
   }, [setCompany, name]);
 
 
-  // If isLoading state is false render jobcard, otherwise show loading...
   if (isLoading) {
-
-    return (<div>"Loading..."</div>);
-
-  } else if (!currentUser.username) {
-    return (
-      <h1>UNAUTHORIZED!</h1>
-    );
-  } else {
-    return (
-      <div>
-        <h1><u>{company.name}</u></h1>
-        <p><b>Description: </b>{company.description}</p>
-        <h4 >Click on the apply button to automatically apply.</h4>
-        <div>{company.jobs.map(job => (
-          <div>
-            <JobCard
-              jobList={currentUser.jobs}
-              jobId={job.id}
-              key={job.id}
-              title={job.title}
-              salary={job.salary}
-              equity={job.equity}
-              username={currentUser.username} />
-          </div>
-        ))}</div>
-      </div>
-    );
+    return <LoadingSpinner />
   }
+  return (
+    <div>
+        <Row>
+          <Col className="bg-white" lg="4" md="12">
+            <h1 className="primary-font mt-5">{company.name}</h1>
+            <img className="company-logo mt-5" src={companyLogo} alt="company logo" />
+            <h5 className="secondary-font mt-5">{company.description}</h5>
+          </Col>
+          <Col style={{minHeight:"100vh"}} lg="8" md="12">
+            <div className="mx-3">
+            <h4 className="text-white secondary-font mt-5" >Click on the apply button to automatically apply.</h4>
+            </div>
+            <div className="mt-5">
+            <Row className="">
+                {company.jobs.map(job => (
+                  <Col xl="4" lg="6" sm="12">
+                    <JobCard
+                      jobList={currentUser.jobs}
+                      jobId={job.id}
+                      key={job.id}
+                      title={job.title}
+                      salary={job.salary}
+                      equity={job.equity}
+                      username={currentUser.username} />
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          </Col>
+        </Row>
+    </div>
+  );
+
 }
 
 export default CompanyDetail
