@@ -10,6 +10,8 @@ import './Profile.css';
 //Parent component of Jobs applied and Profile Form -
 //shows basic information on currentUser, with applied jobs component and edit form component
 
+//TODO line 79 button - make inside profile form component. pass down toggle function. 
+
 function Profile({ currentUser }) {
   let { first_name, last_name, email, photo_url, username } = currentUser
 
@@ -40,8 +42,12 @@ function Profile({ currentUser }) {
       <div>
         <Row>
           <Col className="bg-white" lg="4" md="12">
-            <img className="profilepic px-3 mt-5" src={photo_url} alt=" img of user"></img>
+            <div className="px-3 mt-5">
+              <img className="profilepic " src={photo_url} alt=" img of user"></img>
+              <hr></hr>
+            </div>
             <div className="text-left px-3 primary-font mb-5">
+              <p><b>Username:</b><br />{username}</p>
               <p><b>Name:</b><br />{`${first_name} ${last_name}`}</p>
               <p><b>Email:</b><br />{email} </p>
               <p><b>Bio:</b><br />Vaporware franzen craft beer, mixtape disrupt narwhal
@@ -52,7 +58,7 @@ function Profile({ currentUser }) {
              cle salvia man bun sustainable trust fund. Skateboard leggings celiac, cronut seitan wolf
              hexagon live-edge four loko portland organic brooklyn. </p>
             </div>
-            <Button variant="dark" onClick={toggleFormButton}>Edit Info</Button>
+            <Button className="mb-5" variant="dark" onClick={toggleFormButton}>Edit Info</Button>
           </Col>
 
           <Col style={{ minHeight: "100vh" }} lg="8" md="12">
@@ -72,8 +78,7 @@ function Profile({ currentUser }) {
   }
   return (
     <div className="app">
-      <ProfileForm currentUser={currentUser} />
-      <button onClick={toggleFormButton}>Cancel</button>
+      <ProfileForm currentUser={currentUser} toggleFormButton={toggleFormButton} />
     </div>
   )
 

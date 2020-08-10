@@ -45,6 +45,7 @@ function CompanyList({ currentUser }) {
        <div className="mt-5 px-2">
           <h1 className="primary-font">These companies are hiring.</h1>
           <h4 className="text-white secondary-font">See the most in-demand jobs at the hottest companies.</h4>
+          <p className=" secondary-font">Click on a company to see available jobs.</p>
         </div>
         <Container className="mt-5">
           <Row>

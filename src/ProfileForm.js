@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Alert from "./Alert";
 import JoblyApi from "./HelperApi";
+import LoadingSpinner from './LoadingSpinner';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 // import "./ProfileForm.css";
 
-function ProfileForm({ currentUser }) {
+function ProfileForm({ currentUser, toggleFormButton }) {
   let { first_name, last_name, email, photo_url, username } = currentUser
   const INITIAL_DATA = {
     first_name,
@@ -74,35 +77,60 @@ function ProfileForm({ currentUser }) {
   }
 
   if (isLoading === true) {
-    return (
-      <div>
-        <h5>Loading...</h5>
-      </div>
-    )
+    return <LoadingSpinner />
   }
 
-    return (
-      <div className="profilepage">
-        <h2>{`Welcome Back, ${currentUser.first_name}!`}</h2>
+  return (
+    <>
+      <div className="mt-5 px-2">
+        <h1 className="primary-font"> Edit your profile</h1>
+        <h3 className="text-white secondary-font">Add a profile image and tell us about yourself.</h3>
 
-        <form className="registerform" onSubmit={handleSubmit}>
-          <label htmlFor="first_name"></label>
-          <input placeholder="First Name" onChange={handleChange} value={formData.first_name} name="first_name"></input><br />
-          <label htmlFor="last_name"></label>
-          <input placeholder="Last Name" onChange={handleChange} value={formData.last_name} name="last_name"></input><br />
-          <label htmlFor="email"></label>
-          <input placeholder="Email" onChange={handleChange} value={formData.email} name="email"></input><br />
-          <label htmlFor="password" ></label>
-          <input placeholder="Re-Enter Password" onChange={handleChange} name="password"></input><br />
-          <label htmlFor="photo_url" ></label>
-          <input placeholder="Photo URL" onChange={handleChange} name="photo_url"></input><br />
-          <button type="submit">Submit</button>
-          <div ><Alert errors={errorMessage} /></div>
-        </form>
       </div>
-    )
+      <div className="mt-5 form-container">
+        <Form className="w-75 p-3 m-auto mt-5" onSubmit={handleSubmit}>
+          <Form.Group>
+            <Form.Label htmlFor="first_name"></Form.Label>
+            <Form.Control placeholder="First Name" onChange={handleChange} value={formData.first_name} name="first_name"></Form.Control>
+          </Form.Group>
 
-  
+          <Form.Group>
+          <Form.Label htmlFor="last_name"></Form.Label>
+          <Form.Control placeholder="Last Name" onChange={handleChange} value={formData.last_name} name="last_name"></Form.Control>
+          </Form.Group>
+
+          <Form.Group>
+          <Form.Label htmlFor="email"></Form.Label>
+          <Form.Control placeholder="Email" onChange={handleChange} value={formData.email} name="email"></Form.Control>
+          </Form.Group>
+
+
+          <Form.Group>
+          <Form.Label htmlFor="photo_url" ></Form.Label>
+          <Form.Control placeholder="Photo URL" onChange={handleChange} name="photo_url"></Form.Control>
+          </Form.Group>
+          
+          <Form.Group>  
+          <Form.Label htmlFor="bio" ></Form.Label>
+          <Form.Control placeholder="Bio - Be descriptive!" as="textarea" rows="4" onChange={handleChange} name="bio"></Form.Control>
+          </Form.Group>
+
+          <Form.Group>
+          <Form.Label htmlFor="password" ></Form.Label>
+          <Form.Control placeholder="Re-Enter Password" onChange={handleChange} name="password"></Form.Control>
+          <Form.Text>Please re-enter password to submit changes.</Form.Text>
+          </Form.Group>
+
+          <Button variant="dark" type="submit">Submit</Button>
+          <Button variant="dark" className="ml-2" onClick={toggleFormButton}>Cancel</Button>
+
+          <div className="" ><Alert errors={errorMessage} /></div>
+        </Form>
+      </div>
+    </>
+  )
+
+
 
 
 
