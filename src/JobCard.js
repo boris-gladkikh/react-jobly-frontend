@@ -53,8 +53,8 @@ function JobCard({ jobId, title, salary, equity, company, username, isApplied })
 
   //add to check if you already applied to this job prior by looking at currentUser jobs (pass thru props)
   let applyButtonConditional = (isApplied || Applied === true) ?
-    <Button variant="success">Applied</Button> :
-    <Button variant="dark" onClick={handleApply}>Apply Now</Button>
+    <Button size="sm" variant="success">Applied</Button> :
+    <Button size="sm" variant="dark" onClick={handleApply}>Apply Now</Button>
 
   if (isLoading) {
     return <LoadingSpinner />

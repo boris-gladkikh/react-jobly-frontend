@@ -47,8 +47,9 @@ function LoginSignupForm() {
         history.push("/companies");
       }
       catch (err) {
+        console.log(err)
         setErrorMessage(messages => ([
-          ...messages, err.message
+          ...messages, err
         ]));
         console.error(err);
         setLoading(false);
@@ -71,7 +72,7 @@ function LoginSignupForm() {
       } catch (err) {
         console.log("this is err thats breaking it", err)
         setErrorMessage(messages => ([
-          ...messages, ...err
+          ...messages, err
         ]));
         // alert('Something went wrong with signup!');
         console.error(err);

@@ -41,7 +41,7 @@ function CompanyList({ currentUser }) {
     return <LoadingSpinner />
   }
   return (
-    <div className="mx-3 app">
+    <div className="mx-2 app">
       <div className="mt-5 px-2">
         <h1 className="primary-font">These companies are hiring.</h1>
         <h4 className="text-white secondary-font">See the most in-demand jobs at the hottest companies.</h4>

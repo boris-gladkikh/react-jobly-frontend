@@ -52,7 +52,7 @@ function JobList({ currentUser }) {
 
 
     return (
-      <div className="mx-3 app">
+      <div className="mx-2 app">
         <div className="mt-5 px-2">
           <h1 className="primary-font">These jobs are available.</h1>
           <h4 className="text-white secondary-font">Easily apply to any position with a single click.</h4>
@@ -62,7 +62,7 @@ function JobList({ currentUser }) {
         <Container className="mt-5">
           <Row>
             {jobs.map(({ title, salary, equity, id, company_handle }) =>
-              <Col key={id} sm="12" md="6" lg="3">
+              <Col key={id} sm="12" md="6" lg="4" xl="3">
                 <JobCard
                   isApplied={appliedJobsSet.has(id)}
 

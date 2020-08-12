@@ -24,7 +24,6 @@ function Routes() {
     async function fetchCurrentUser(){
       try{
         let username = window.localStorage.getItem('username');
-        console.log(username, "this is username in routes\n\n\n\n")
         if(username !== null){
           let response = await JoblyApi.getCurrentUser(username);
           setCurrentUser(response);

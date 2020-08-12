@@ -25,23 +25,45 @@ function NavBar({ currentUser, setCurrentUser }) {
 
   if (token) {
     return (
-      <Navbar bg="dark" variant="dark" className="justify-content-end">
-        <Nav className="text-white nav-font">
-        <Nav.Link href="/">HOME</Nav.Link>
-        <Nav.Link href="/companies">COMPANIES</Nav.Link>
-        <Nav.Link href="/jobs">JOBS</Nav.Link>
-        <Nav.Link href="/profile">PROFILE</Nav.Link>
-        <Nav.Link href="/login" onClick={handleLogout} >LOG OUT</Nav.Link>
-        </Nav>
+      <Navbar expand="lg" bg="dark" variant="dark" className="">
+        <Navbar.Toggle className="" aria-controls="navigation" />
+        <Navbar.Collapse className="" id="navigation">
+          <Nav className="text-white  nav-font">
+            <Nav.Item>
+              <Nav.Link href="/">HOME</Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+            <Nav.Link href="/companies">COMPANIES</Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+            <Nav.Link href="/jobs">JOBS</Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+            <Nav.Link href="/profile">PROFILE</Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+            <Nav.Link href="/login" onClick={handleLogout} >LOG OUT</Nav.Link>
+            </Nav.Item>
+
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     )
   } else {
     return (
-      <Navbar variant="dark" className="justify-content-end">
-        <Nav className="nav-font">
-        <Nav.Link href="/">HOME</Nav.Link>
-        <Nav.Link href="/login">LOGIN</Nav.Link>
-        </Nav>
+      <Navbar expand="lg" variant="dark" className="">
+        <Navbar.Toggle className="" aria-controls="navigation" />
+        <Navbar.Collapse className="" id="navigation">
+          <Nav className="nav-font justify-content-end">
+            <Nav.Link href="/">HOME</Nav.Link>
+            <Nav.Link href="/login">LOGIN</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+
       </Navbar>
     )
   }

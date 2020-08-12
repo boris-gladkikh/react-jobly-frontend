@@ -60,8 +60,8 @@ function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
   }, [searchClick, filterSearch, formData]);
 
   return (
-    <div className="text-right pb-2 pl-2">
-      <Form inline className="justify-content-center" onSubmit={handleSubmit}>
+    <div className=" mb-2">
+      <Form inline className="justify-content-center"  onSubmit={handleSubmit}>
         <Form.Group>
 
         <Form.Label htmlFor="search"></Form.Label>

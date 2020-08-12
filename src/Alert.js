@@ -10,8 +10,8 @@ function Alert({errors}){
 
   return (
 
-    errors.map((err,i) => (
-      <div key={i}><h4 className="text-dark primary-font">{err}</h4></div>
+    Array.from(errors).map((err,i) => (
+      <div key={i}><h4 className="text-dark primary-font">{err.message}</h4></div>
     ))
    
   );

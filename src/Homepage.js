@@ -30,7 +30,7 @@ function HomePage() {
 
   } else {
     return (
-      <div className="app mx-3">
+      <div className="app mx-2">
         <div className="mt-5 px-2">
           <h1 className="primary-font">Welcome to Career Cat!</h1>
           <h2 className="text-white secondary-font">Find Your Purpose. Find Your Culture.</h2>
