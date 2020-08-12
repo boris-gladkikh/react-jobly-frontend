@@ -10,7 +10,7 @@ import companyLogo from './img/company-rectangle.png';
 function CompanyCard({ name, description, logoUrl, handle }) {
   return (
     <Link className="" to={`/companies/${handle}`}>
-      <div className="company-card current">
+      <div className="company-card">
         <div className="">
           <img className="company-logo" src={companyLogo} alt="company logo" />
         </div>       

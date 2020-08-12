@@ -25,10 +25,10 @@ function NavBar({ currentUser, setCurrentUser }) {
 
   if (token) {
     return (
-      <Navbar expand="lg" bg="dark" variant="dark" className="">
-        <Navbar.Toggle className="" aria-controls="navigation" />
-        <Navbar.Collapse className="" id="navigation">
-          <Nav className="text-white  nav-font">
+      <Navbar expand="lg"  bg="dark" variant="dark" className="justify-content-end">
+        <Navbar.Toggle aria-controls="navigation" />
+        <Navbar.Collapse id="navigation" className="justify-content-end">
+          <Nav className="text-white nav-font">
             <Nav.Item>
               <Nav.Link href="/">HOME</Nav.Link>
             </Nav.Item>
@@ -55,10 +55,11 @@ function NavBar({ currentUser, setCurrentUser }) {
     )
   } else {
     return (
-      <Navbar expand="lg" variant="dark" className="">
-        <Navbar.Toggle className="" aria-controls="navigation" />
-        <Navbar.Collapse className="" id="navigation">
-          <Nav className="nav-font justify-content-end">
+
+      <Navbar expand="lg" variant="dark" className="justify-content-end">
+        <Navbar.Toggle aria-controls="navigation2" />
+        <Navbar.Collapse className="justify-content-end" id="navigation2">
+          <Nav className="nav-font">
             <Nav.Link href="/">HOME</Nav.Link>
             <Nav.Link href="/login">LOGIN</Nav.Link>
           </Nav>

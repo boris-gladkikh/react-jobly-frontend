@@ -167,6 +167,7 @@ function LoginSignupForm() {
             <Form.Group>
             <Form.Label htmlFor="email"></Form.Label>
             <Form.Control placeholder="Email" onChange={handleChange} value={formData.email} name="email"></Form.Control>
+            <Form.Text>We will never share your email with third parties.</Form.Text>
             </Form.Group>
 
             <Form.Group>
