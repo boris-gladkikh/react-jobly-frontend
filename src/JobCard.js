@@ -14,7 +14,7 @@ function JobCard({ jobId, title, salary, equity, company, username, isApplied })
 
   useEffect(function apply(){
 
-    async function applyForJob(jobId) {
+    async function applyForJob() {
       let data = {
         state: "Applied",
         username
@@ -40,7 +40,7 @@ function JobCard({ jobId, title, salary, equity, company, username, isApplied })
     }
 
   
-  },[isApplying])
+  },[isApplying, jobId, username])
 
 
   function handleApply(evt) {

@@ -11,7 +11,7 @@ import './Profile.css';
 //shows basic information on currentUser, with applied jobs component and edit form component
 
 function Profile({ currentUser }) {
-  let { first_name, last_name, email, photo_url, username } = currentUser
+  let { first_name, last_name, email, photo_url, username, bio } = currentUser
 
 
   const [showForm, setShowForm] = useState(false);
@@ -40,13 +40,7 @@ function Profile({ currentUser }) {
               <p><b>Username:</b><br />{username}</p>
               <p><b>Name:</b><br />{`${first_name} ${last_name}`}</p>
               <p><b>Email:</b><br />{email} </p>
-              <p><b>Bio:</b><br />Vaporware franzen craft beer, mixtape disrupt narwhal
-            locavore offal drinking vinegar sustainable polaroid. Lumbersexual lyft truffaut
-             williamsburg fixie craft beer brooklyn synth hoodie. Edison bulb YOLO DIY whatever
-             subway tile migas knausgaard actually readymade gentrify waistcoat viral typewriter
-             tousled umami. Offal single-origin coffee taiyaki shaman, brunch af blue bottle wayfarers
-             cle salvia man bun sustainable trust fund. Skateboard leggings celiac, cronut seitan wolf
-             hexagon live-edge four loko portland organic brooklyn. </p>
+              <p><b>Bio:</b><br />{bio || "no bio yet"} </p>
             </div>
             <Button className="mb-5" variant="dark" onClick={toggleFormButton}>Edit Info</Button>
           </Col>

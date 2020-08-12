@@ -5,14 +5,16 @@ import LoadingSpinner from './LoadingSpinner';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+
 // import "./ProfileForm.css";
 
 function ProfileForm({ currentUser, toggleFormButton }) {
-  let { first_name, last_name, email, photo_url, username } = currentUser
+  let { first_name, last_name, email, photo_url, username, bio } = currentUser
   const INITIAL_DATA = {
     first_name,
     last_name,
     email,
+    bio,
     password: "",
     photo_url
   }
@@ -20,10 +22,6 @@ function ProfileForm({ currentUser, toggleFormButton }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
-
-  const userJobs = currentUser.jobs;
-  console.log("these are current user's jobs:", userJobs)
-
 
   // set authorization
   // make a patch request to the server
@@ -38,7 +36,9 @@ function ProfileForm({ currentUser, toggleFormButton }) {
     async function patchFormData(username, data) {
       try {
         let response = await JoblyApi.updateProfile(username, data)
-        setFormData({ ...response })
+        setFormData({ ...response });
+        window.location.reload();
+
       }
       catch (err) {
         console.log("Error!", err)
@@ -46,16 +46,13 @@ function ProfileForm({ currentUser, toggleFormButton }) {
           [...errors, err]
         ))
       }
-      finally {
-        setIsLoading(false);
-      }
     }
     if (isUpdating) {
       patchFormData(username, formData)
       setIsUpdating(false);
     }
 
-  }, [isUpdating])
+  }, [isUpdating, username, formData])
 
 
   function handleSubmit(evt) {
@@ -107,17 +104,17 @@ function ProfileForm({ currentUser, toggleFormButton }) {
 
           <Form.Group>
           <Form.Label htmlFor="photo_url" ></Form.Label>
-          <Form.Control placeholder="Photo URL" onChange={handleChange} name="photo_url"></Form.Control>
+          <Form.Control placeholder="Photo URL" onChange={handleChange} value={formData.photo_url}  name="photo_url"></Form.Control>
           </Form.Group>
           
           <Form.Group>  
           <Form.Label htmlFor="bio" ></Form.Label>
-          <Form.Control placeholder="Bio - Be descriptive!" as="textarea" rows="4" onChange={handleChange} name="bio"></Form.Control>
+          <Form.Control placeholder="Bio - Be descriptive!" as="textarea" rows="4" onChange={handleChange} value={formData.bio} name="bio"></Form.Control>
           </Form.Group>
 
           <Form.Group>
           <Form.Label htmlFor="password" ></Form.Label>
-          <Form.Control placeholder="Re-Enter Password" onChange={handleChange} name="password"></Form.Control>
+          <Form.Control placeholder="Re-Enter Password" type="password" onChange={handleChange} name="password"></Form.Control>
           <Form.Text>Please re-enter password to submit changes.</Form.Text>
           </Form.Group>
 

@@ -42,18 +42,19 @@ function LoginSignupForm() {
       try {
         let response = await JoblyApi.login(formData);
         window.localStorage.setItem('token', response);
-        setToken(response)
+        window.localStorage.setItem('username', formData.username);  
+        setToken(response);
         history.push("/companies");
       }
       catch (err) {
         setErrorMessage(messages => ([
-          ...messages, ...err
+          ...messages, err.message
         ]));
-        // alert("Something went wrong. with login");
         console.error(err);
+        setLoading(false);
       }
       finally{
-        setLoading(false);
+        // setLoading(false);
 
       }
     }
@@ -64,6 +65,7 @@ function LoginSignupForm() {
       try {
         let response = await JoblyApi.signup(formData);
         window.localStorage.setItem('token', response);
+        window.localStorage.setItem('username', formData.username);
         setToken(response);
         history.push("/companies");
       } catch (err) {

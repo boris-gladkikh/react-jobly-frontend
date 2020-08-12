@@ -1,23 +1,5 @@
-.searchBar{
-  padding: 10px;
-  margin-right: 0px;
-}
-
-.searchButton{
-  margin-left: 0px;
-  padding: 10px;
-}
-
-.searchButton:hover{
-  background-color: tomato;
-  color: white;
-}
-
-.searchButton:active {
-  color: white;
-  background-color: blue;;
-}
-
-.searchContainer{
-  margin: 0px;
+.search-bar{
+  top: 0px;
+  background-color: #3A3A3A;
+  width: 100vw;
 }

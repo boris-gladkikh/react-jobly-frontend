@@ -3,7 +3,6 @@ import JoblyApi from "./HelperApi";
 import { useParams } from "react-router-dom";
 import JobCard from './JobCard';
 import LoadingSpinner from './LoadingSpinner';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import companyLogo from './img/company-rectangle.png';
@@ -35,6 +34,7 @@ function CompanyDetail({ currentUser }) {
   if (isLoading) {
     return <LoadingSpinner />
   }
+  console.log("thisis currenty user in company detail", currentUser)
   return (
     <div>
         <Row>

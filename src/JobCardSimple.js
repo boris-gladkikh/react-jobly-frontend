@@ -8,7 +8,7 @@ function JobCardSimple({ title, company }) {
     <div className="mb-2">
       <Card >
         <Card.Header>
-          <h5 className="primary-font">{title}</h5>
+          <h6 className="primary-font">{title}</h6>
         </Card.Header>
         <Card.Body>
           <p className="secondary-font">{company}</p>

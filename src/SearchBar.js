@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import JoblyApi from "./HelperApi";
-import "./SearchBar.css"
+import "./SearchBar.css";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 
 
@@ -9,6 +12,7 @@ function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
   //TODO add string
   const [formData, setFormData] = useState();
   const [searchClick, setSearchClick] = useState(false);
+
 
   // handleChange: sets formData state to form values
   function handleChange(evt) {
@@ -56,12 +60,15 @@ function SearchBar({ searchCompanies, searchJobs, whichSearch }) {
   }, [searchClick, filterSearch, formData]);
 
   return (
-    <div className="searchContainer">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="search"></label>
-        <input className="searchBar" onChange={handleChange} name="search" placeholder="Search"type="text" />
-        <button className="searchButton" type="submit">Go</button>
-      </form>
+    <div className="text-right pb-2 pl-2">
+      <Form inline className="justify-content-center" onSubmit={handleSubmit}>
+        <Form.Group>
+
+        <Form.Label htmlFor="search"></Form.Label>
+        <Form.Control  className="" onChange={handleChange} name="search" placeholder={`Search ${whichSearch}`} type="text" />
+        <Button variant="dark" className="" type="submit">Go</Button>
+        </Form.Group>
+      </Form>
     </div>
   );
 }

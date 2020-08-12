@@ -30,13 +30,8 @@ function JobList({ currentUser }) {
     if (!jobs) {
       getJobs();
     }
-  }, [setJobs]);
+  }, [setJobs, jobs]);
 
-  /* 
-  TODO: THIS IS THE NO OP MEMORY LEAK BUG!!! HOW TO FIX THIS?
-  trying to propogate job id array to check if a jobCard's id is included, to pass down to jobcard
-  to see if job is applied for already or not.
-   */
 
 
 
@@ -61,9 +56,9 @@ function JobList({ currentUser }) {
         <div className="mt-5 px-2">
           <h1 className="primary-font">These jobs are available.</h1>
           <h4 className="text-white secondary-font">Easily apply to any position with a single click.</h4>
-          <p className="primary-font">You can find a list of all jobs applied to on your profile page.</p>
+          <p className="primary-font">You can find a list of all your applied jobs on your profile page.</p>
+          <SearchBar whichSearch='jobs' searchJobs={jobListSearch} />
         </div>
-        {/* <SearchBar whichSearch='jobs' searchJobs={jobListSearch} /> */}
         <Container className="mt-5">
           <Row>
             {jobs.map(({ title, salary, equity, id, company_handle }) =>
