@@ -50,7 +50,7 @@ function Profile({ currentUser }) {
               <h2 className="text-white primary-font mt-5" >Here are your applied jobs.</h2>
               <h5 className="secondary-font">Most employers typically respond in 7-10 days.</h5>
             </div>
-            <div className="mt-5">
+            <div className="mt-5 mx-2">
               <AppliedJobs userJobs={userJobs} />
             </div>
           </Col>
